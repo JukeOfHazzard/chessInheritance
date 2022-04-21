@@ -27,6 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14E794E22811D91700C0EB31 /* Design Documents (functions only::reverse engineer) */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Design Documents (functions only::reverse engineer)"; sourceTree = "<group>"; };
 		C12A3BDD255D79CF00C22728 /* Lab01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab01; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12A3BF4255D7A5500C22728 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C12A3BF6255D7A5C00C22728 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -60,6 +61,7 @@
 				C13286142578104000FCEC47 /* uiDraw.h */,
 				C13286152578104000FCEC47 /* uiInteract.cpp */,
 				C13286162578104000FCEC47 /* uiInteract.h */,
+				14E794E22811D91700C0EB31 /* Design Documents (functions only::reverse engineer) */,
 				C12A3BDE255D79CF00C22728 /* Products */,
 				C12A3BF3255D7A5500C22728 /* Frameworks */,
 			);
