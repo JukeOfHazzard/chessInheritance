@@ -12,6 +12,8 @@
 #include <string>         // for STRING
 using namespace std;
 
+#define YEET 0
+
 /***********************************************
  * Row Column
  * Simple row/column pair
@@ -530,5 +532,5 @@ int main(int argc, char** argv)
    // set everything into action
    ui.run(callBack, board);             
 
-   return 0;
+   return YEET;
 }
