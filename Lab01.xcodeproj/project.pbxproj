@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		143F3E39282723A8000038B7 /* unitTests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E37282723A8000038B7 /* unitTests.cpp */; };
+		143F3E3C282733D9000038B7 /* King.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E3A282733D9000038B7 /* King.cpp */; };
+		143F3E4028273449000038B7 /* Queen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E3E28273449000038B7 /* Queen.cpp */; };
+		143F3E432827345E000038B7 /* Rook.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E412827345E000038B7 /* Rook.cpp */; };
+		143F3E4628273476000038B7 /* Bishop.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E4428273476000038B7 /* Bishop.cpp */; };
+		143F3E4928273484000038B7 /* Knight.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E4728273484000038B7 /* Knight.cpp */; };
+		143F3E4C2827348E000038B7 /* Pawn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E4A2827348E000038B7 /* Pawn.cpp */; };
+		143F3E4F28273494000038B7 /* Space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E4D28273494000038B7 /* Space.cpp */; };
+		143F3E5228273581000038B7 /* Piece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E5028273581000038B7 /* Piece.cpp */; };
 		C12A3BF5255D7A5500C22728 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C12A3BF4255D7A5500C22728 /* GLUT.framework */; };
 		C12A3BF7255D7A5C00C22728 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C12A3BF6255D7A5C00C22728 /* OpenGL.framework */; };
 		C13286172578104100FCEC47 /* chess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C13286112578104000FCEC47 /* chess.cpp */; };
@@ -30,6 +38,22 @@
 /* Begin PBXFileReference section */
 		143F3E37282723A8000038B7 /* unitTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unitTests.cpp; sourceTree = "<group>"; };
 		143F3E38282723A8000038B7 /* unitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = unitTests.h; sourceTree = "<group>"; };
+		143F3E3A282733D9000038B7 /* King.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = King.cpp; sourceTree = "<group>"; };
+		143F3E3B282733D9000038B7 /* King.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = King.h; sourceTree = "<group>"; };
+		143F3E3E28273449000038B7 /* Queen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Queen.cpp; sourceTree = "<group>"; };
+		143F3E3F28273449000038B7 /* Queen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queen.h; sourceTree = "<group>"; };
+		143F3E412827345E000038B7 /* Rook.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Rook.cpp; sourceTree = "<group>"; };
+		143F3E422827345E000038B7 /* Rook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rook.h; sourceTree = "<group>"; };
+		143F3E4428273476000038B7 /* Bishop.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Bishop.cpp; sourceTree = "<group>"; };
+		143F3E4528273476000038B7 /* Bishop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bishop.h; sourceTree = "<group>"; };
+		143F3E4728273484000038B7 /* Knight.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Knight.cpp; sourceTree = "<group>"; };
+		143F3E4828273484000038B7 /* Knight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Knight.h; sourceTree = "<group>"; };
+		143F3E4A2827348E000038B7 /* Pawn.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Pawn.cpp; sourceTree = "<group>"; };
+		143F3E4B2827348E000038B7 /* Pawn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pawn.h; sourceTree = "<group>"; };
+		143F3E4D28273494000038B7 /* Space.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Space.cpp; sourceTree = "<group>"; };
+		143F3E4E28273494000038B7 /* Space.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Space.h; sourceTree = "<group>"; };
+		143F3E5028273581000038B7 /* Piece.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Piece.cpp; sourceTree = "<group>"; };
+		143F3E5128273581000038B7 /* Piece.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Piece.h; sourceTree = "<group>"; };
 		C12A3BDD255D79CF00C22728 /* Lab01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab01; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12A3BF4255D7A5500C22728 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C12A3BF6255D7A5C00C22728 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -54,6 +78,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		143F3E3D28273410000038B7 /* Pieces */ = {
+			isa = PBXGroup;
+			children = (
+				143F3E5028273581000038B7 /* Piece.cpp */,
+				143F3E5128273581000038B7 /* Piece.h */,
+				143F3E3A282733D9000038B7 /* King.cpp */,
+				143F3E3B282733D9000038B7 /* King.h */,
+				143F3E3E28273449000038B7 /* Queen.cpp */,
+				143F3E3F28273449000038B7 /* Queen.h */,
+				143F3E412827345E000038B7 /* Rook.cpp */,
+				143F3E422827345E000038B7 /* Rook.h */,
+				143F3E4428273476000038B7 /* Bishop.cpp */,
+				143F3E4528273476000038B7 /* Bishop.h */,
+				143F3E4728273484000038B7 /* Knight.cpp */,
+				143F3E4828273484000038B7 /* Knight.h */,
+				143F3E4A2827348E000038B7 /* Pawn.cpp */,
+				143F3E4B2827348E000038B7 /* Pawn.h */,
+				143F3E4D28273494000038B7 /* Space.cpp */,
+				143F3E4E28273494000038B7 /* Space.h */,
+			);
+			path = Pieces;
+			sourceTree = "<group>";
+		};
 		C12A3BD4255D79CF00C22728 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +112,7 @@
 				C13286162578104000FCEC47 /* uiInteract.h */,
 				143F3E37282723A8000038B7 /* unitTests.cpp */,
 				143F3E38282723A8000038B7 /* unitTests.h */,
+				143F3E3D28273410000038B7 /* Pieces */,
 				C12A3BDE255D79CF00C22728 /* Products */,
 				C12A3BF3255D7A5500C22728 /* Frameworks */,
 			);
@@ -143,10 +191,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				143F3E5228273581000038B7 /* Piece.cpp in Sources */,
+				143F3E4628273476000038B7 /* Bishop.cpp in Sources */,
+				143F3E4028273449000038B7 /* Queen.cpp in Sources */,
 				C13286172578104100FCEC47 /* chess.cpp in Sources */,
 				143F3E39282723A8000038B7 /* unitTests.cpp in Sources */,
+				143F3E4F28273494000038B7 /* Space.cpp in Sources */,
 				C13286182578104100FCEC47 /* uiDraw.cpp in Sources */,
+				143F3E4928273484000038B7 /* Knight.cpp in Sources */,
 				C13286192578104100FCEC47 /* uiInteract.cpp in Sources */,
+				143F3E432827345E000038B7 /* Rook.cpp in Sources */,
+				143F3E3C282733D9000038B7 /* King.cpp in Sources */,
+				143F3E4C2827348E000038B7 /* Pawn.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
