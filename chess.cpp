@@ -6,10 +6,12 @@
 
 #include "uiInteract.h"   // for Interface
 #include "uiDraw.h"       // for draw*
+#include "unitTests.h"    // for unit tests
 #include <set>            // for STD::SET
 #include <cassert>        // for ASSERT
 #include <fstream>        // for IFSTREAM
 #include <string>         // for STRING
+#include <cctype>         // for tolower
 using namespace std;
 
 #define YEET 0
@@ -357,6 +359,8 @@ bool move(char* board, int positionFrom, int positionTo)
       board[positionFrom] = ' ';
       return true;
    }
+   
+   // en-passant
 
    return false;
 
@@ -382,6 +386,8 @@ void callBack(Interface *pUI, void * p)
       pUI->clearSelectPosition();
    else
       possible = getPossibleMoves(board, pUI->getSelectPosition());
+   
+   // check pawn promotion
 
    // if we clicked on a blank spot, then it is not selected
    if (pUI->getSelectPosition() != -1 && board[pUI->getSelectPosition()] == ' ')
@@ -513,7 +519,6 @@ int main(int argc, char** argv)
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-      // ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P',
       'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'
    };
@@ -524,7 +529,6 @@ int main(int argc, char** argv)
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-      // ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
       'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q', 'Q',
       'Q', 'Q', 'Q', 'Q', 'K', 'Q', 'Q', 'Q'
    };
@@ -539,6 +543,10 @@ int main(int argc, char** argv)
    if (argc == 2)
       readFile(argv[1], board);
 #endif // !_WIN32
+   
+   // run unit tests?
+   bool runUnitTests = false;
+   if (runUnitTests) ; // add unit test function call here
 
    // set everything into action
    ui.run(callBack, board);             
