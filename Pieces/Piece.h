@@ -8,9 +8,13 @@
 #ifndef Piece_h
 #define Piece_h
 
-#include "Position.h"
 #include "Board.h"
+#include "Position.h"
+#include "Move.h"
 #include "uiDraw.h"
+
+#include <set>
+using namespace std;
 
 class Piece {
 protected:
