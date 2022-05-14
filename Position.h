@@ -20,26 +20,28 @@ private:
 public:
     Position();
     Position(int row, int col);
+    
     //getters
     int getRow();
     int getColumn();
     int getX();
     int getY();
     bool isValid();
+    
     //setters
     void setRow(int row);
     void setCol(int col);
     void adjustRow(int desRow);
     void adjustCol(int desCol);
+    
     //operators
     bool operator == (const Position & rhs);
     Position operator = (Position & rhs);
     Position operator + (Position & rhs);
-    
-    
-    // stream I/O useful for debugging
-//    friend std::ostream& operator << (std::ostream& out, const Position& rhs);
-//    friend std::istream& operator >> (std::istream& in, Position& rhs);
 };
+
+// stream I/O useful for debugging
+ostream& operator << (ostream& out, const Position& rhs);
+istream& operator >> (istream& in, Position& rhs);
 
 #endif /* Position_h */

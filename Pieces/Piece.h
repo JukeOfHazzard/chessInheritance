@@ -22,23 +22,24 @@ protected:
    bool fWhite;
    int nMoves;
    int lastMove;
+
 public:
    // Piece() {}
-   Piece (char row, char col, bool white);
+   Piece(char row, char col, bool white);
    Piece(Position & rhs) { assignP(rhs); }
    Piece(Piece & rhs) { assign(rhs); }
 
-   void assignP(Position & rhs){}
-   void assign(Piece & rhs){}
+   void assignP(Position & rhs) {}
+   void assign(Piece & rhs) {}
 
-   bool isWhite() const {return true;} //stubbed
-   bool isMove() const {return true;} //stubbed
+   bool isWhite() const { return true; } //stubbed
+   bool isMove() const { return true; } //stubbed
    int getNMoves();
-   Position getPosition () { return postion;}
-   bool justMoved() {return true; }
+   Position getPosition () { return postion; }
+   bool justMoved() { return true; }
 
-   virtual char getLetter();
    virtual void display(ogstream & gout);
+   virtual char getLetter();
    virtual set<Move> getMoves(Board board);
 };
 
