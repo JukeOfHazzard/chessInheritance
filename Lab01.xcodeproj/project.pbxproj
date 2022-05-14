@@ -18,6 +18,7 @@
 		143F3E5228273581000038B7 /* Piece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 143F3E5028273581000038B7 /* Piece.cpp */; };
 		1453AC4928303786007C1DE2 /* Position.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1453AC4728303786007C1DE2 /* Position.cpp */; };
 		1453AC4C283037A6007C1DE2 /* Move.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1453AC4A283037A6007C1DE2 /* Move.cpp */; };
+		1453AC4F2830384A007C1DE2 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1453AC4D2830384A007C1DE2 /* Board.cpp */; };
 		C12A3BF5255D7A5500C22728 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C12A3BF4255D7A5500C22728 /* GLUT.framework */; };
 		C12A3BF7255D7A5C00C22728 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C12A3BF6255D7A5C00C22728 /* OpenGL.framework */; };
 		C13286172578104100FCEC47 /* chess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C13286112578104000FCEC47 /* chess.cpp */; };
@@ -60,6 +61,8 @@
 		1453AC4828303786007C1DE2 /* Position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Position.h; sourceTree = "<group>"; };
 		1453AC4A283037A6007C1DE2 /* Move.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Move.cpp; sourceTree = "<group>"; };
 		1453AC4B283037A6007C1DE2 /* Move.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Move.h; sourceTree = "<group>"; };
+		1453AC4D2830384A007C1DE2 /* Board.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
+		1453AC4E2830384A007C1DE2 /* Board.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Board.hpp; sourceTree = "<group>"; };
 		C12A3BDD255D79CF00C22728 /* Lab01 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lab01; sourceTree = BUILT_PRODUCTS_DIR; };
 		C12A3BF4255D7A5500C22728 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		C12A3BF6255D7A5C00C22728 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -112,6 +115,8 @@
 			children = (
 				C13286112578104000FCEC47 /* chess.cpp */,
 				C13286122578104000FCEC47 /* point.h */,
+				1453AC4D2830384A007C1DE2 /* Board.cpp */,
+				1453AC4E2830384A007C1DE2 /* Board.hpp */,
 				1453AC4728303786007C1DE2 /* Position.cpp */,
 				1453AC4828303786007C1DE2 /* Position.h */,
 				1453AC4A283037A6007C1DE2 /* Move.cpp */,
@@ -204,6 +209,7 @@
 				143F3E5228273581000038B7 /* Piece.cpp in Sources */,
 				143F3E4628273476000038B7 /* Bishop.cpp in Sources */,
 				143F3E4028273449000038B7 /* Queen.cpp in Sources */,
+				1453AC4F2830384A007C1DE2 /* Board.cpp in Sources */,
 				C13286172578104100FCEC47 /* chess.cpp in Sources */,
 				1453AC4928303786007C1DE2 /* Position.cpp in Sources */,
 				143F3E39282723A8000038B7 /* unitTests.cpp in Sources */,

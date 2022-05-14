@@ -8,6 +8,10 @@
 #ifndef Piece_h
 #define Piece_h
 
+#include "Position.h"
+#include "Board.h"
+#include "uiDraw.h"
+
 class Piece {
 protected:
     Position position;
