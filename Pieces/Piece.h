@@ -24,20 +24,17 @@ protected:
    int lastMove;
 public:
    // Piece() {}
-   Piece (char row, char col, bool white)
-   {
-       this->position = Position(row, col);
-   }
-   Piece(Position & rhs) { assign(rhs); }
-   Piece(const Piece & rhs) { assign(rhs); }
+   Piece (char row, char col, bool white);
+   Piece(Position & rhs) { assignP(rhs); }
+   Piece(Piece & rhs) { assign(rhs); }
 
-   void assign(Position & rhs){}
+   void assignP(Position & rhs){}
    void assign(Piece & rhs){}
 
    bool isWhite() const {return true;} //stubbed
    bool isMove() const {return true;} //stubbed
-   int getNMoves() {}
-   Position getPosition () { return postion; }
+   int getNMoves();
+   Position getPosition () { return postion;}
    bool justMoved() {return true; }
 
    virtual char getLetter();
