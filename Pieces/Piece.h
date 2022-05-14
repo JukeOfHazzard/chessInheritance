@@ -14,22 +14,21 @@
 
 class Piece {
 protected:
-<<<<<<< HEAD
    Position postion;
    bool fWhite;
    int nMoves;
    int lastMove;
 public:
    // Piece() {}
-   Peice (char row, char col, bool white)
+   Piece (char row, char col, bool white)
    {
       this->position = Position(row, col)
    }
-   Peice(Position & rhs) { assign(rhs); }
-   Peice(const Peice & rhs) { assign(rhs); }
+   Piece(Position & rhs) { assign(rhs); }
+   Piece(const Piece & rhs) { assign(rhs); }
 
    void assign(Position & rhs){}
-   void assign(Peice & rhs){}
+   void assign(Piece & rhs){}
 
    bool isWhite() const {return true;} //stubbed
    bool isMove() const {return true;} //stubbed
