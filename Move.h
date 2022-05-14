@@ -48,7 +48,7 @@ public:
 };
 
 // stream I/O useful for debugging
-std::ostream& operator << (std::ostream& out, const Move& pt);
-std::istream& operator >> (std::istream& in, Move& pt);
+std::ostream& operator << (std::ostream& out, const Move& rhs);
+std::istream& operator >> (std::istream& in, Move& rhs);
 
 #endif /* Move_h */
