@@ -9,6 +9,29 @@
 #define Piece_h
 
 class Piece {
+protected:
+    Position position;
+    bool fWhite;
+    int nMoves;
+    int lastMove;
+    
+public:
+    Piece() {
+        
+    }
+    
+    void assign(Position position);
+    void assign(Piece piece);
+    
+    // getters
+    bool isWhite() const;
+    bool isMove() const;
+    int getNMoves() const;
+    Position getPosition() const;
+    bool justMoves() const;
+    virtual char getLetter() const;
+    virtual display(ogstream gout);
+    virtual set<moves> getMoves(board);
     
 };
 
