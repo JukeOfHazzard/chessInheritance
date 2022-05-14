@@ -5,10 +5,12 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
+#include "Piece.h"
+
 #ifndef Bishop_h
 #define Bishop_h
 
-class Bishop {
+class Bishop : public Piece {
     
 };
 

@@ -7,13 +7,20 @@
 #define unitTests_h
 
 #include "King.h"
+#include "Queen.h"
 #include "Pawn.h"
-#include "Board.h"
+#include "Rook.h"
+#include "Bishop.h"
+#include "Knight.h"
+#include "Space.h"
 #include "Position.h"
 
 #include <iostream>
 #include <cassert>
 using namespace std;
+
+enum file {a, b, c, d, e, f, g, h}; // todo: potentially we can make these a part of Piece class
+enum leftOrRight {left, right};
 
 // todo: put runUnitTests() prototype here and definition in unitTests.cpp
 
@@ -22,10 +29,6 @@ using namespace std;
 // todo: organize each of the unit tests into different files
 
 class TestPawn {
-private:
-    enum file {a, b, c, d, e, f, g, h}; // todo: potentially we can make these a part of Piece class
-    enum leftOrRight {left, right};
-
 public:
     void run() {
         // include all the test case methods here
@@ -40,23 +43,43 @@ public:
         test_invalid_black_pawn_promotion();
     }
     
+private:
+    Piece * getBlankBoard() {
+        Piece pieces[64];
+        for (int i = 0; i < 64; i++)
+            pieces[i] = Space();
+        return pieces;
+    }
+    
+    void swap(Piece * pieces, Move move) {
+        auto tmp = pieces[move.getDestination()];
+        pieces[move.getDestination()] = pieces[move.getSource()];
+        pieces[move.getSource()] = tmp;
+    }
+    
     void test_white_pawn_promotion() {
         // setup
         Pawn p;
-        char board[64] = {
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', 'p', ' ', ' ', ' ', ' ',
-            ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
-        int col = d; // start file
-        int row = 7; // start rank
-        p.location = (row-1) * 8 + col;
+        
+        auto pieces = getBlankBoard(); // Piece[64] array
+        
+        int file = d; // start file
+        int rank = 7; // start rank
+        Position startPosition(rank-1, file);
+        
+        file = d; // start file
+        rank = 8; // start rank
+        Position newPosition(rank-1, file);
+        
+        pieces[startPosition.getLocation()] = p;
+        
+        Move move(startPosition, newPosition);
         
         // exercise
+        set<Move> possibleMoves = p.getMoves(pieces);
+        if (possibleMoves.find(move) != possibleMoves.end()) {
+            swap(pieces, move);
+        }
         p.move_normal(); // moves from D7 to D8
         
         // verify

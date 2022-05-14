@@ -28,6 +28,7 @@ private:
     
 public:
    Move() {}
+   Move(Position start, Position end) : source(start), destination(end) {}
 
    // getters
    Position getSource() const;

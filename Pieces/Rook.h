@@ -5,10 +5,12 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
+#include "Piece.h"
+
 #ifndef Rook_h
 #define Rook_h
 
-class Rook {
+class Rook : public Piece {
     
 };
 

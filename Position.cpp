@@ -7,6 +7,15 @@
 
 #include "Position.h"
 
+// member operator overloading
+Position & Position::operator = (const Position & rhs) {
+    this->location = rhs.location;
+    this->squareWidth = rhs.squareWidth;
+    this->squareHeight = rhs.squareHeight;
+    return *this;
+}
+
+// non-member operator overloading
 /*
  * non-member operator overload: <<
  * so we can cout text which represents Move object contents
