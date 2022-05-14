@@ -14,6 +14,10 @@ class King : Piece {
 private:
 public:
     friend class TestKing;
+    
+    void advance();
+    
+    
 };
 
 #endif /* King_h */

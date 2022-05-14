@@ -40,7 +40,6 @@ public:
 
    virtual void display(ogstream & gout);
    virtual char getLetter();
-   virtual void display(ogstream & gout);
    virtual set<Move> getMoves(Board board);
 };
 
