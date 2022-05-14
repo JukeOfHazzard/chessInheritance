@@ -8,6 +8,8 @@
 
 #include "King.h"
 #include "Pawn.h"
+#include "Board.h"
+#include "Position.h"
 
 #include <iostream>
 #include <cassert>
@@ -291,7 +293,8 @@ private:
       //setup
       King k;
       k.fWhite = true;
-      k.position.location = 29;
+      k.position = Position(4, 5)
+      Board b;
 
       //exersise
       k.advance(k.position.locaiton, 21);
@@ -307,6 +310,7 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Board b;
 
       //exersise
       k.advance(k.position.locaiton, 37);
@@ -322,9 +326,10 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Board b;
 
       //exersise
-      k.advance(k.position.locaiton, 28);
+      k.advance(k.position.location, 28);
       //verify
       assert(k.position.location == 28);
       assert(k.castleK == false);
@@ -337,6 +342,8 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Peice board[64];
+      board[k.position.location] = k;
 
       //exersise
       k.advance(k.position.locaiton, 30);
@@ -352,6 +359,8 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Peice board[64];
+      board[k.position.location] = k;
 
       //exersise
       k.advance(k.position.locaiton, 20);
@@ -367,6 +376,8 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Peice board[64];
+      board[k.position.location] = k;
 
       //exersise
       k.advance(k.position.locaiton, 22);
@@ -382,6 +393,8 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Peice board[64];
+      board[k.position.location] = k;
 
       //exersise
       k.advance(k.position.locaiton, 36);
@@ -397,6 +410,8 @@ private:
       King k;
       k.fWhite = true;
       k.position.location = 29;
+      Peice board[64];
+      board[k.position.location] = k;
 
       //exersise
       k.advance(k.position.locaiton, 38);
@@ -415,6 +430,9 @@ private:
       King = k;
       k.fWhite = true;
       k.position.location = 61;
+      Peice board[64];
+      board[k.position.location] = k;
+
       //excersize
       k.advance(k.position.locaiton, 59);
       //verify
@@ -429,6 +447,9 @@ private:
       King = k;
       k.fWhite = true;
       k.position.location = 61;
+      Peice board[64];
+      board[k.position.location] = k;
+
       //excersize
       k.advance(k.position.locaiton, 63);
       //verify
@@ -443,6 +464,9 @@ private:
       King = k;
       k.fWhite = false;
       k.position.location = 5;
+      Peice board[64];
+      board[k.position.location] = k;
+
       //excersize
       k.advance(k.position.locaiton, 3);
       //verify
@@ -457,6 +481,9 @@ private:
       King = k;
       k.fWhite = false;
       k.position.location = 5;
+      Peice board[64];
+      board[k.position.location] = k;
+
       //excersize
       k.advance(k.position.locaiton, 7);
       //verify

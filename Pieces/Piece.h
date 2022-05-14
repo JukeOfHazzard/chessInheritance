@@ -8,7 +8,7 @@
 #ifndef Piece_h
 #define Piece_h
 
-#include "Board.h"
+//#include "Board.h"
 #include "Position.h"
 #include "Move.h"
 #include "uiDraw.h"
@@ -24,7 +24,12 @@ protected:
    int lastMove;
 
 public:
-   // Piece() {}
+   Piece()
+   {
+      fWhite = true; //obviously white is default
+      nMoves = 0;
+      lastMove = 0;
+   }
    Piece (char row, char col, bool white);
    Piece(Position & rhs) { assignP(rhs); }
    Piece(Piece & rhs) { assign(rhs); }
@@ -32,7 +37,7 @@ public:
    void assignP(Position & rhs) {}
    void assign(Piece & rhs) {}
 
-   bool isWhite() const { return true; } //stubbed
+   bool isWhite() const { return fWhite; } //stubbed
    bool isMove() const { return true; } //stubbed
    int getNMoves();
    Position getPosition () { return postion; }
@@ -40,7 +45,7 @@ public:
 
    virtual void display(ogstream & gout);
    virtual char getLetter();
-   virtual set<Move> getMoves(Board board);
+   virtual set<Move> getMoves(Piece * peices);
 };
 
 #endif /* Piece_h */

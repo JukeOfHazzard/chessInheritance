@@ -19,11 +19,14 @@ private:
     double squareHeight;
 public:
     Position();
-    Position(int row, int col);
+    Position(int row, int col)
+    {
+        location = row * 8 + col;
+    }
     
     //getters
-    int getRow();
-    int getColumn();
+    int getRow() { return location / 8;}
+    int getColumn() { return location % 8;}
     int getX();
     int getY();
     bool isValid();
