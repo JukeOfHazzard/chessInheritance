@@ -8,8 +8,13 @@
 #ifndef Piece_h
 #define Piece_h
 
+#include "Position.h"
+#include "Board.h"
+#include "uiDraw.h"
+
 class Piece {
 protected:
+<<<<<<< HEAD
    Position postion;
    bool fWhite;
    int nMoves;
@@ -34,7 +39,7 @@ public:
 
    virtual char getLetter() = default;
    virtual void display(ogstream & gout) = default;
-   virtual void getMoves(Board board) = default;
+   virtual set<Move> getMoves(Board board) = default;
 };
 
 #endif /* Piece_h */
