@@ -26,7 +26,7 @@ public:
    // Piece() {}
    Piece (char row, char col, bool white)
    {
-      this->position = Position(row, col)
+       this->position = Position(row, col);
    }
    Piece(Position & rhs) { assign(rhs); }
    Piece(const Piece & rhs) { assign(rhs); }
@@ -37,12 +37,12 @@ public:
    bool isWhite() const {return true;} //stubbed
    bool isMove() const {return true;} //stubbed
    int getNMoves() {}
-   Position getPosition (return postion) {}
+   Position getPosition () { return postion; }
    bool justMoved() {return true; }
 
-   virtual char getLetter() = default;
-   virtual void display(ogstream & gout) = default;
-   virtual set<Move> getMoves(Board board) = default;
+   virtual char getLetter();
+   virtual void display(ogstream & gout);
+   virtual set<Move> getMoves(Board board);
 };
 
 #endif /* Piece_h */
