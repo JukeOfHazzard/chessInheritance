@@ -30,6 +30,7 @@ public:
     int getX();
     int getY();
     bool isValid();
+    char getLocation() const { return location;}
     
     //setters
     void setRow(int row);
@@ -38,8 +39,11 @@ public:
     void adjustCol(int desCol);
     
     //operators
-    bool operator == (const Position & rhs);
-    Position operator = (Position & rhs);
+    bool & operator == (const Position & rhs);
+    Position & operator = (Position & rhs)
+    {
+        return *this;
+    }
     Position operator + (Position & rhs);
     
     

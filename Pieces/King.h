@@ -7,6 +7,7 @@
 
 #include "Piece.h"
 #include "Move.h"
+#include "Board.h"
 #include <set>
 using namespace std;
 

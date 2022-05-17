@@ -42,6 +42,15 @@ public:
    int getNMoves();
    Position getPosition () { return postion; }
    bool justMoved() { return true; }
+   
+   
+   Piece operator = (Piece & rhs)
+   {
+//      this->postion = rhs.getPosition();
+      this->fWhite = rhs.isWhite();
+//      *this->
+      return *this;
+   }
 
    virtual void display(ogstream & gout);
    virtual char getLetter();
