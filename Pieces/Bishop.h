@@ -11,7 +11,14 @@
 #define Bishop_h
 
 class Bishop : public Piece {
-    
+public:
+    Bishop(int row, int col, bool isWhite) : Piece(row, col, isWhite) {}
+    char getLetter() const { return 'b';}
+    void getMoves(set <Move> & moves, const Board & board) const;
+    virtual void display(ogstream* pgout) const
+    {
+        pgout->drawPawn(postion, isWhite());
+    }
 };
 
 #endif /* Bishop_h */

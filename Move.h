@@ -43,7 +43,13 @@ public:
    // setters
    void setEnPassant();
    void setCastle(bool isKing);
-   void setWhiteMove();
+   void setWhiteMove(bool isWhite);
+   void setPromotion(char letter);
+   
+   void setSrc(const Position & pSrc) const;
+   void setDes(const Position & pDes);
+   void setCaputre(char peiceL);
+   
    void assign(Move move);
    void assign(string move);
 };

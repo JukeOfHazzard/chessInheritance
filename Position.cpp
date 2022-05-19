@@ -7,11 +7,45 @@
 
 #include "Position.h"
 
+Position::Position(const Position & rhs) : location(0)
+{
+    location = rhs.location;
+}
+
+
 // member operator overloading
-Position & Position::operator = (const Position & rhs) {
+bool Position::operator == (const Position & rhs) const
+{
+    if(isInvalid())
+        return rhs.isInvalid();
+    else
+        return rhs.location == location;
+}
+
+bool Position::operator != (const Position & rhs) const
+{
+    if(isInvalid())
+        return rhs.isValid();
+    else
+        return rhs.location != location;
+}
+
+const Position & Position::operator = (const Position & rhs) {
     this->location = rhs.location;
-    this->squareWidth = rhs.squareWidth;
-    this->squareHeight = rhs.squareHeight;
+
+    return *this;
+}
+
+const Position & Position::operator=(const char *rhs)
+{
+    if(rhs == NULL)
+        location = -1;
+    else if (rhs[0] < 'a' || rhs[0] > 'h' ||
+             rhs[1] < '1' || rhs[1] > '8')
+        location = -1;
+    else
+        set(rhs[1] - '1', rhs[0] - 'a');
+    
     return *this;
 }
 
@@ -21,8 +55,13 @@ Position & Position::operator = (const Position & rhs) {
  * so we can cout text which represents Move object contents
  */
 ostream & operator << (ostream & out, const Position & rhs) {
-   out << "string which represents Position object"; // basically print("text")
-   return out;
+   if(rhs.isValid())
+       out << (char)(rhs.getCol() + 'a')
+       << (char)(rhs.getRow() + '1');
+    else
+        out << "error";
+    
+    return out;
 }
 
 /*
@@ -30,8 +69,18 @@ ostream & operator << (ostream & out, const Position & rhs) {
  * so we can cin text which sets Move object contents
  */
 std::istream & operator >> (std::istream & in, Position & rhs) {
-   string infoToDigest; // input must be info that can be used to define the Move components
-   in >> infoToDigest; // fetch info and save to local variables first
-   // rhs.assign(infoToDigest); // then set rhs with the data
-   return in; // do not forget to return "in"
+    char text[3] = {};
+    in >> text[0] >> text[1];
+    if(in.fail())
+    {
+        in.clear();
+        in.ignore();
+        throw string("Error readin Coordinates");
+    }
+    else
+    {
+        rhs = text;
+    }
+    
+    return in;
 }

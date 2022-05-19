@@ -7,6 +7,15 @@
 
 
 #include "Pieces/Piece.h"
+//#include "Pieces/..."
+//#include "Pieces/King.h"
+//#include "Pieces/Queen.h"
+//#include "Pieces/Rook.h"
+//#include "Pieces/Knight.h"
+//#include "Pieces/Bishop.h"
+//#include "Pieces/Pawn.h"
+//#include "Pieces/Space.h"
+
 #include "Move.h"
 #include "uiDraw.h"
 #include "Position.h"
@@ -21,31 +30,13 @@ private:
    Piece peices[64];
    Move currentMove;
    ogstream gout;
-   
-   Piece createPeice(char p);
 public:
    Board()
    {
-      //can make function that will allow the importing of different boards
-      char board[64] ={
-         'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r',
-         'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p',
-         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-         ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ',
-         'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P',
-         'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'};
-      for(int i = 0; i < 64; i++)
-      {
-         //just to see if it can create a board
-         peices[i] = createPeice(board[i]);
-      }
    }
    int getCurrentMove();
    bool whiteTurn();
    void display();
-   Piece getP();
    void free();
    void reset();
    void move(Move m);
@@ -54,6 +45,18 @@ public:
 //      std::swap(peices[p1.getLocation()], peices[p2.getLocation()]);
    }
    void assertBoard();
+   
+   bool operator == (Position & p)
+   {
+      //stubbed
+      return true;
+   }
+   
+   Board operator [] (Position & rhs)
+   {
+      //stubbed
+      return *this;
+   }
    
 };
 

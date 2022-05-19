@@ -22,7 +22,13 @@ public:
     friend class TestKing;
     
     void advance();
-    char getLetter();
+    char getLetter()
+    {
+        if(fWhite)
+            return 'K';
+        else
+            return 'k';
+    }
     set<Move> getMoves(Board board);
     
 };

@@ -8,7 +8,7 @@
 #ifndef Piece_h
 #define Piece_h
 
-//#include "Board.h"
+#include "Board.h"
 #include "Position.h"
 #include "Move.h"
 #include "uiDraw.h"
@@ -22,39 +22,47 @@ protected:
    bool fWhite;
    int nMoves;
    int lastMove;
+   
+   set <Move> getMoveSlide ( const Board & board, const Delta deltas[],
+                              int numDelta) const;
+   set <Move> getMoveNoSlide ( const Board & board, const Delta deltas[],
+                              int numDelta) const;
 
 public:
-   Piece()
-   {
-      fWhite = true; //obviously white is default
-      nMoves = 0;
-      lastMove = 0;
-   }
-   Piece (char row, char col, bool white);
-   Piece(Position & rhs) { assignP(rhs); }
-   Piece(Piece & rhs) { assign(rhs); }
+   Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, postion{0,0}
+   { }
+   Piece (char row, char col, bool white = true) :
+   fWhite{white}, nMoves{0}, postion(row, col), lastMove{-1}
+   { }
+   Piece(Piece & rhs) { *this = rhs; }
 
-   void assignP(Position & rhs) {}
-   void assign(Piece & rhs) {}
-
-   bool isWhite() const { return fWhite; } //stubbed
-   bool isMove() const { return true; } //stubbed
-   int getNMoves();
+   bool isWhite() const { return fWhite; }
+   bool isMoved() const { return getNMoves() != 0;}
+   int getNMoves() const { return nMoves;}
    Position getPosition () { return postion; }
-   bool justMoved() { return true; }
-   
-   
-   Piece operator = (Piece & rhs)
+   bool justMoved( int currentMove)
    {
-//      this->postion = rhs.getPosition();
-      this->fWhite = rhs.isWhite();
-//      *this->
+      return (currentMove - 1 == lastMove);
+   }
+   
+   void setLasMove(int currentMove) {lastMove = currentMove;}
+   
+   bool operator == (char letter) { return getLetter() == letter;}
+   bool operator != (char letter) { return getLetter() != letter;}
+   
+   Piece & operator = (const Piece & rhs);
+   Piece & operator = (const Position & rhs)
+   {
+      nMoves++;
+      postion = rhs;
       return *this;
    }
 
-   virtual void display(ogstream & gout);
-   virtual char getLetter();
-   virtual set<Move> getMoves(Piece * peices);
+   virtual ~Piece() {}
+   
+   virtual void display(ogstream & gout) const = 0;
+   virtual char getLetter() const = 0;
+   virtual void getMoves(set <Move> & moves, const Board & board) const = 0;
 };
 
 #endif /* Piece_h */
