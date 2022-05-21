@@ -7,8 +7,8 @@
 
 #include "Board.h"
 
-Piece Board :: createPeice(char peiceSym)
-{
+//Piece Board :: createPiece(char pieceSym)
+//{
 //    switch (peiceSym) {
 //        case 'p':
 //            Pawn temp;
@@ -20,6 +20,7 @@ Piece Board :: createPeice(char peiceSym)
 //    }
 //
 //
-    Piece temp;
-    return temp;
-}
+//    Piece * temp;
+//    temp = new Pawn(vars...); // return value can't be abstract class
+//    return temp;
+//}

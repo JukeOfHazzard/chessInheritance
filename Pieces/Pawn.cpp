@@ -68,7 +68,7 @@ void Pawn::getMoves(set<Move> &moves, const Board &board) const
             if(posMove.getRow() == (isWhite() ? 7 :0))
                 addPromotion(moves, move);
             else
-                moves.insert(moves);
+                moves.insert(move);
         }
     }
     //for en passant
@@ -91,7 +91,7 @@ void Pawn::getMoves(set<Move> &moves, const Board &board) const
             move.setWhiteMove(isWhite());
             move.setCaputre(board[posMove].getLetter());
             move.setEnPassant();
-            move.insert(move);
+            moves.insert(move);
         }
     }
 }

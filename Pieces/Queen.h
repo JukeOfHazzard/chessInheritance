@@ -10,7 +10,12 @@
 
 #include "Piece.h"
 
-class Queen : public Piece {
+class Queen : Piece {
+    
+    
+public:
+    
+    char getLetter() const { return (fWhite) ? 'Q' : 'q'; }
     
 };
 

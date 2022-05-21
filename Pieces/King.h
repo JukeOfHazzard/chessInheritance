@@ -10,7 +10,7 @@
 
 #include "Piece.h"
 #include "Move.h"
-#include "Board.h"
+
 #include <set>
 using namespace std;
 
@@ -18,19 +18,16 @@ class King : Piece {
 private:
     bool castleK = false;
     bool castleQ = false;
+    
 public:
-    friend class TestKing;
     
     void advance();
-    char getLetter()
-    {
-        if(fWhite)
-            return 'K';
-        else
-            return 'k';
-    }
+
+    char getLetter() const { return (fWhite) ? 'K' : 'k'; }
+
     set<Move> getMoves(Board board);
     
+    friend class TestKing;
 };
 
 #endif /* King_h */

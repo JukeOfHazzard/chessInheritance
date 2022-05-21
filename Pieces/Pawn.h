@@ -10,19 +10,21 @@
 
 #include "Piece.h"
 
-class Pawn : public Piece {
+class Pawn : Piece {
 private:
     void addPromotion(set <Move> & moves, Move & move) const;
 public:
-    friend class TestPawn;
     
     Pawn(int row, int col, bool isWhite) : Piece(row, col, isWhite) {}
-    char getLetter() const { return 'p';}
+
+    char getLetter() { return (fWhite) ? 'P' : 'p'; }
+
     void getMoves(set <Move> & moves, const Board & board) const;
-    virtual void display(ogstream* pgout) const
-    {
-        pgout->drawPawn(postion, isWhite());
+    void display(ogstream* pgout) const {
+        pgout->drawPawn(postion.getLocation(), isWhite());
     }
+
+    friend class TestPawn;
 };
 
 #endif /* Pawn_h */

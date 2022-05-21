@@ -10,8 +10,12 @@
 
 #include "Piece.h"
 
-class Rook : public Piece {
+class Rook : Piece {
     
+    
+public:
+    
+    char getLetter() const { return (fWhite) ? 'R' : 'r'; }
 };
 
 #endif /* Rook_h */

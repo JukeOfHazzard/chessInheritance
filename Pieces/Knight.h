@@ -10,8 +10,10 @@
 
 #include "Piece.h"
 
-class Knight : public Piece {
+class Knight : Piece {
     
+public:
+    char getLetter() { return (fWhite) ? 'N' : 'n'; }
 };
 
 #endif /* Knight_h */
