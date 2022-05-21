@@ -95,7 +95,7 @@ void Move::setCastle(bool isKing) {
 /*
  *
  */
-void Move::setWhiteMove() {
+void Move::setWhiteMove(bool isWhite) {
    // TODO:
 }
 

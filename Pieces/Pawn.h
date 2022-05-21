@@ -5,10 +5,10 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
-#include "Piece.h"
-
 #ifndef Pawn_h
 #define Pawn_h
+
+#include "Piece.h"
 
 class Pawn : public Piece {
 private:

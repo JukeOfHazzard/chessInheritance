@@ -5,10 +5,10 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
-#include "Piece.h"
-
 #ifndef Queen_h
 #define Queen_h
+
+#include "Piece.h"
 
 class Queen : public Piece {
     

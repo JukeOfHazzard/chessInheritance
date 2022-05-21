@@ -23,10 +23,8 @@ protected:
    int nMoves;
    int lastMove;
    
-   set <Move> getMoveSlide ( const Board & board, const Delta deltas[],
-                              int numDelta) const;
-   set <Move> getMoveNoSlide ( const Board & board, const Delta deltas[],
-                              int numDelta) const;
+   set<Move> getMoveSlide ( const Board & board, const Delta deltas[], int numDelta) const;
+   set<Move> getMoveNoSlide ( const Board & board, const Delta deltas[], int numDelta) const;
 
 public:
    Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, postion{0,0}
@@ -40,8 +38,7 @@ public:
    bool isMoved() const { return getNMoves() != 0;}
    int getNMoves() const { return nMoves;}
    Position getPosition () { return postion; }
-   bool justMoved( int currentMove)
-   {
+   bool justMoved( int currentMove) {
       return (currentMove - 1 == lastMove);
    }
    

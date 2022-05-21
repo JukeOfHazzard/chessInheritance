@@ -5,14 +5,14 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
+#ifndef King_h
+#define King_h
+
 #include "Piece.h"
 #include "Move.h"
 #include "Board.h"
 #include <set>
 using namespace std;
-
-#ifndef King_h
-#define King_h
 
 class King : Piece {
 private:

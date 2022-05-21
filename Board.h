@@ -5,25 +5,23 @@
 //  Created by Elijah Harrison on 5/14/22.
 //
 
+#ifndef Board_h
+#define Board_h
 
-#include "Pieces/Piece.h"
-//#include "Pieces/..."
-//#include "Pieces/King.h"
-//#include "Pieces/Queen.h"
-//#include "Pieces/Rook.h"
-//#include "Pieces/Knight.h"
-//#include "Pieces/Bishop.h"
-//#include "Pieces/Pawn.h"
-//#include "Pieces/Space.h"
+#include "Piece.h"
+#include "King.h"
+#include "Queen.h"
+#include "Rook.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "Pawn.h"
+#include "Space.h"
 
 #include "Move.h"
 #include "uiDraw.h"
 #include "Position.h"
 #include <iostream>
 #include <set>
-
-#ifndef Board_h
-#define Board_h
 
 class Board {
 private:
