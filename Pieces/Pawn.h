@@ -19,7 +19,7 @@ public:
 
     char getLetter() { return (fWhite) ? 'P' : 'p'; }
 
-    void getMoves(set <Move> & moves, const Board & board) const;
+    void getMoves(set <Move> & moves, const Board& board) const;
     void display(ogstream* pgout) const {
         pgout->drawPawn(postion.getLocation(), isWhite());
     }

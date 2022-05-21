@@ -46,9 +46,9 @@ public:
    void setWhiteMove(bool isWhite);
    void setPromotion(char letter);
    
-   void setSrc(const Position & pSrc) const;
-   void setDes(const Position & pDes);
-   void setCaputre(char peiceL);
+   void setSource(const Position & position);
+   void setDestination(const Position & position);
+   void setCapture(char pieceToCapture);
    
    void assign(Move move);
    void assign(string move);

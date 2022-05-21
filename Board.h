@@ -26,11 +26,13 @@ class Board {
 private:
    Piece* pieces[64]; // using pointers because this allows abstraction
    Move currentMove;
-//   ogstream gout; // uncomment this after implementing, it's throwing errors rn
+//   ogstream * gout;
+
 public:
    Board() { }
+//   Board(ogstream * gout) : gout(gout) { }
    
-   void display();
+   void display(ogstream & gout) { }
    void free();
    void reset();
    void move(Move m);
@@ -44,17 +46,8 @@ public:
    bool whiteTurn();
    
    // operators
-   bool operator == (Position & p) const {
-      //stubbed
-      return true;
-   }
-   
-   char operator [] (Position & rhs) const {
-      // used to refer to board as board[position] rather than board.board[position]
-      return pieces[rhs.getLocation()]->getLetter();
-   }
-   
-   char operator [] (Position & rhs) {
+   char operator [] (const Position & rhs) {
+      // used to refer to board as board[position] rather than board.board[position]->getLetter()
       return pieces[rhs.getLocation()]->getLetter();
    }
 };
