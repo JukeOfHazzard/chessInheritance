@@ -5,12 +5,17 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
-#include "Piece.h"
-
 #ifndef Queen_h
 #define Queen_h
 
-class Queen : public Piece {
+#include "Piece.h"
+
+class Queen : Piece {
+    
+    
+public:
+    
+    char getLetter() const { return (fWhite) ? 'Q' : 'q'; }
     
 };
 

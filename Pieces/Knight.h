@@ -5,13 +5,15 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
-#include "Piece.h"
-
 #ifndef Knight_h
 #define Knight_h
 
-class Knight : public Piece {
+#include "Piece.h"
+
+class Knight : Piece {
     
+public:
+    char getLetter() { return (fWhite) ? 'N' : 'n'; }
 };
 
 #endif /* Knight_h */

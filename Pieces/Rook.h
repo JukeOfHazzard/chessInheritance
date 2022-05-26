@@ -5,13 +5,17 @@
 //  Created by Elijah Harrison on 5/7/22.
 //
 
-#include "Piece.h"
-
 #ifndef Rook_h
 #define Rook_h
 
-class Rook : public Piece {
+#include "Piece.h"
+
+class Rook : Piece {
     
+    
+public:
+    
+    char getLetter() const { return (fWhite) ? 'R' : 'r'; }
 };
 
 #endif /* Rook_h */

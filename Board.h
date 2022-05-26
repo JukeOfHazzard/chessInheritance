@@ -5,59 +5,51 @@
 //  Created by Elijah Harrison on 5/14/22.
 //
 
-
-#include "Pieces/Piece.h"
-//#include "Pieces/..."
-//#include "Pieces/King.h"
-//#include "Pieces/Queen.h"
-//#include "Pieces/Rook.h"
-//#include "Pieces/Knight.h"
-//#include "Pieces/Bishop.h"
-//#include "Pieces/Pawn.h"
-//#include "Pieces/Space.h"
-
-#include "Move.h"
-#include "uiDraw.h"
-#include "Position.h"
-#include <iostream>
-#include <set>
-
 #ifndef Board_h
 #define Board_h
 
+#include "King.h"
+#include "Queen.h"
+#include "Rook.h"
+#include "Knight.h"
+#include "Bishop.h"
+#include "Pawn.h"
+#include "Space.h"
+
+#include "Move.h"
+#include "Position.h"
+#include "uiDraw.h"
+#include <iostream>
+using namespace std;
+
 class Board {
 private:
-   Piece peices[64];
+   Piece* pieces[64]; // using pointers because this allows abstraction
    Move currentMove;
-   ogstream gout;
+//   ogstream * gout;
+
 public:
-   Board()
-   {
-   }
-   int getCurrentMove();
-   bool whiteTurn();
-   void display();
+   Board() { }
+//   Board(ogstream * gout) : gout(gout) { }
+   
+   void display(ogstream & gout) { }
    void free();
    void reset();
    void move(Move m);
-   void swap(Position p1, Position p2)
-   {
+   void swap(Position p1, Position p2) {
 //      std::swap(peices[p1.getLocation()], peices[p2.getLocation()]);
    }
    void assertBoard();
    
-   bool operator == (Position & p)
-   {
-      //stubbed
-      return true;
-   }
+   // getters
+   int getCurrentMove();
+   bool whiteTurn();
    
-   Board operator [] (Position & rhs)
-   {
-      //stubbed
-      return *this;
+   // operators
+   char operator [] (const Position & rhs) {
+      // used to refer to board as board[position] rather than board.board[position]->getLetter()
+      return pieces[rhs.getLocation()]->getLetter();
    }
-   
 };
 
 #endif /* Board_h */
