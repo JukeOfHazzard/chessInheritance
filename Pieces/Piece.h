@@ -42,7 +42,7 @@ public:
    Piece(Piece & rhs) { *this = rhs; }
    
    // display/update/handle methods
-   virtual void display(ogstream & gout) const = 0;
+   virtual void display(ogstream * gout) const = 0;
 
    // getters
    virtual char getLetter() const = 0;

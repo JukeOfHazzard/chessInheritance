@@ -12,7 +12,9 @@
 
 #include <iostream>
 #include <string>
+#define PIECE_EMPTY ' '
 using namespace std;
+class Board;
 
 class Move {
 private:
@@ -25,33 +27,55 @@ private:
    bool castleQ;
    bool isWhite;
    string error;
+   
+   void read(const std::string & s);
     
 public:
-   Move() {}
-   Move(Position start, Position end) : source(start), destination(end) {}
+   Move();
+   Move(const Move & rhs) {*this = rhs;}
+   Move(const char * spot) {*this = spot;}
+//   Move(Position start, Position end) : source(start), destination(end) {}
 
    // getters
-   Position getSource() const;
-   Position getDestination() const;
-   string getErrorText() const;
-   char getPromotion() const;
-   bool getEnPassant() const;
-   bool getCastleK() const;
-   bool getCastleQ() const;
-   bool getWhiteMove() const;
+   Position getSource() const { return source;}
+   Position getDestination() const { return destination;}
+   string getText() const;
+   char getPromotion() const { return piece;}
+   char getCapture() const {return capture;}
+   bool getEnPassant() const { return enPassant;}
+   bool getCastleK() const { return castleK;}
+   bool getCastleQ() const { return castleQ;}
+   bool getWhiteMove() const { return isWhite;}
     
    // setters
-   void setEnPassant();
-   void setCastle(bool isKing);
-   void setWhiteMove(bool isWhite);
-   void setPromotion(char letter);
+   void setEnPassant() {enPassant = true;}
+   void setWhiteMove(bool isWhite) {this->isWhite = isWhite;}
+   void setPromotion(char letter) {piece = letter;}
+   void setSource(const Position & position) {source = position;}
+   void setDestination(const Position & position) {destination = position;}
+   void setCapture(char pieceToCapture) {capture = tolower(pieceToCapture);}
+   void complete(const Board & board);
+   void setCastle(bool isKing)
+   {
+      if(isKing)
+         castleK = true;
+      else
+         castleQ = true;
+   }
    
-   void setSource(const Position & position);
-   void setDestination(const Position & position);
-   void setCapture(char pieceToCapture);
-   
-   void assign(Move move);
-   void assign(string move);
+   const Move & operator = (const Move & rhs);
+   const Move & operator = (const string & s)
+   {
+      read(s);
+      return *this;
+   }
+   const Move & operator = (const char * s)
+   {
+      const string str(s);
+      read(str);
+      return *this;
+   }
+   bool operator == (const Move & rhs) const;
 };
 
 // stream I/O useful for debugging

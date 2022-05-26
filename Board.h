@@ -10,11 +10,7 @@
 
 #include "King.h"
 #include "Queen.h"
-#include "Rook.h"
-#include "Knight.h"
-#include "Bishop.h"
-#include "Pawn.h"
-#include "Space.h"
+#include "Pieces/Piece.h"
 
 #include "Move.h"
 #include "Position.h"
@@ -23,33 +19,47 @@
 using namespace std;
 
 class Board {
-private:
-   Piece* pieces[64]; // using pointers because this allows abstraction
-   Move currentMove;
-//   ogstream * gout;
+protected:
+   void assertBoard();
+   Piece* board[8][8]; // using pointers because this allows abstraction
+   int currentMove;
+   ogstream * pgout;
 
 public:
-   Board() { }
-//   Board(ogstream * gout) : gout(gout) { }
-   
-   void display(ogstream & gout) { }
-   void free();
-   void reset();
-   void move(Move m);
-   void swap(Position p1, Position p2) {
-//      std::swap(peices[p1.getLocation()], peices[p2.getLocation()]);
+//   Board() { }
+   Board(ogstream * pgout, bool noreset = false) : currentMove(-1), pgout(pgout)
+   {
+      if(!noreset)
+         reset(false);
    }
-   void assertBoard();
+   ~Board()
+   {
+      free();
+   }
+   //setters
+   void free();
+   virtual void reset(bool fFree = true);
+   void move(const Move & m);
+   void swap(const Position & p1, const Position & p2);
+   void setCurrentMove(int currentMove) {this->currentMove = currentMove;}
+   void operator -= (const Position & rhs);
+   void operator -= (const Move & rhs);
+   void remove(const Position & pos);
+   const Piece* operator = (Piece & pRhs);
+   Piece & operator [] (const Position & rhs)
+   {
+      return *board[rhs.getRow()][rhs.getCol()];
+   }
    
    // getters
-   int getCurrentMove();
-   bool whiteTurn();
-   
-   // operators
-   char operator [] (const Position & rhs) {
-      // used to refer to board as board[position] rather than board.board[position]->getLetter()
-      return pieces[rhs.getLocation()]->getLetter();
+   int getCurrentMove() const { return currentMove;}
+   bool whiteTurn() const {return getCurrentMove() % 2 == 1;}
+   void display(const Position & posHover, const Position & posSelect) const;
+   const Piece & operator [] (const Position & rhs) const {
+      return *board[rhs.getRow()][rhs.getCol()];
    }
+   
+   
 };
 
 #endif /* Board_h */
