@@ -10,10 +10,19 @@
 
 #include "Piece.h"
 
-class Knight : Piece {
+class Knight : public Piece {
     
 public:
-    char getLetter() { return (fWhite) ? 'N' : 'n'; }
+    Knight(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+    Knight(Position p, bool isWhite = true)   : Knight(p.getRow(), p.getCol(), isWhite) { }
+    
+    // override pure virtual methods from Piece class
+    void getMoves(set<Move> & moves, const Board & board) const override;
+    char getLetter() const override { return (fWhite) ? 'N' : 'n'; }
+    
+    void display(ogstream* pgout) const override {
+        pgout->drawKnight(postion.getLocation(), isWhite());
+    }
 };
 
 #endif /* Knight_h */

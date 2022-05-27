@@ -10,12 +10,20 @@
 
 #include "Piece.h"
 
-class Rook : Piece {
+class Rook : public Piece {
     
     
 public:
+    Rook(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+    Rook(Position p, bool isWhite = true)   : Rook(p.getRow(), p.getCol(), isWhite) { }
     
-    char getLetter() const { return (fWhite) ? 'R' : 'r'; }
+    // override pure virtual methods from Piece class
+    void getMoves(set<Move> & moves, const Board & board) const override;
+    char getLetter() const override { return (fWhite) ? 'R' : 'r'; }
+    
+    void display(ogstream * gout) const override {
+        // TODO: call the correct ogstream method for this piece
+    }
 };
 
 #endif /* Rook_h */

@@ -32,21 +32,21 @@ protected:
 
 public:
    // constructors
-   Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, postion{0,0}
-   { }
+   Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, postion{0,0} { }
 
    Piece (char row, char col, bool white = true) :
-   fWhite{white}, nMoves{0}, postion(row, col), lastMove{-1}
-   { }
+      fWhite{white}, nMoves{0}, postion(row, col), lastMove{-1} { }
 
    Piece(Piece & rhs) { *this = rhs; }
    
+   ~Piece() { } // we need this because 'delete (Piec)board[r][c]' is going to be called often
+   
    // display/update/handle methods
-   virtual void display(ogstream * gout) const = 0;
+   virtual void display(ogstream * gout) const = 0; // pure virtual methods to be overriden
 
    // getters
    virtual char getLetter() const = 0;
-   virtual void getMoves(set <Move> & moves, const Board & board) const = 0;
+   virtual void getMoves(set<Move> & moves, const Board & board) const = 0;
    
    bool isWhite() const { return fWhite; }
    bool isMoved() const { return getNMoves() != 0;}

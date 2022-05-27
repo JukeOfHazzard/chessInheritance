@@ -8,9 +8,14 @@
 #ifndef Board_h
 #define Board_h
 
+#include "Piece.h"
 #include "King.h"
 #include "Queen.h"
-#include "Pieces/Piece.h"
+#include "Rook.h"
+#include "Bishop.h"
+#include "Knight.h"
+#include "Pawn.h"
+#include "Space.h"
 
 #include "Move.h"
 #include "Position.h"

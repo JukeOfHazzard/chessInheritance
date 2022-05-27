@@ -10,17 +10,19 @@
 
 #include "Piece.h"
 
-class Pawn : Piece {
+class Pawn : public Piece {
 private:
     void addPromotion(set <Move> & moves, Move & move) const;
-public:
     
-    Pawn(int row, int col, bool isWhite) : Piece(row, col, isWhite) {}
+public:
+    Pawn(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+    Pawn(Position p, bool isWhite = true)   : Pawn(p.getRow(), p.getCol(), isWhite) { }
+    
+    // override pure virtual methods from Piece class
+    void getMoves(set<Move> & moves, const Board & board) const override;
+    char getLetter() const override { return (fWhite) ? 'P' : 'p'; }
 
-    char getLetter() { return (fWhite) ? 'P' : 'p'; }
-
-    void getMoves(set <Move> & moves, const Board& board) const;
-    void display(ogstream* pgout) const {
+    void display(ogstream* pgout) const override {
         pgout->drawPawn(postion.getLocation(), isWhite());
     }
 

@@ -10,12 +10,18 @@
 
 #include "Piece.h"
 
-class Space : Piece {
+class Space : public Piece {
 public:
-   Space(int row, int col) : Piece(row, col) {}
-   char getLetter() const { return ' ';}
-   void getMoves(set <Move> & moves, const Board & board) const { }
-   void display(ogstream * pgout) const {}
+   Space(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+   Space(Position p, bool isWhite = true)   : Space(p.getRow(), p.getCol(), isWhite) { }
+   
+   // override pure virtual methods from Piece class
+   void getMoves(set<Move> & moves, const Board & board) const override;
+   char getLetter() const override { return ' ';}
+   
+   void display(ogstream * pgout) const override {
+      // do nothing...?
+   }
 };
 
 #endif /* Space_h */

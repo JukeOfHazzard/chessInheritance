@@ -10,16 +10,18 @@
 
 #include "Piece.h"
 
-class Bishop : Piece {
+class Bishop : public Piece {
 public:
-    Bishop(int row, int col, bool isWhite) : Piece(row, col, isWhite) {}
+    Bishop(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+    Bishop(Position p, bool isWhite = true)   : Bishop(p.getRow(), p.getCol(), isWhite) { }
     
-    void display(ogstream* pgout) const {
-        pgout->drawPawn(postion.getLocation(), isWhite());
+    // override pure virtual methods from Piece class
+    void getMoves(set<Move> & moves, const Board & board) const override;
+    char getLetter() const override { return (fWhite) ? 'B' : 'b'; }
+    
+    void display(ogstream* pgout) const override {
+        pgout->drawBishop(postion.getLocation(), isWhite());
     }
-    
-    char getLetter() const { return (fWhite) ? 'B' : 'b'; }
-    void getMoves(set <Move> & moves, const Board & board) const;
 };
 
 #endif /* Bishop_h */

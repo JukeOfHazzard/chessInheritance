@@ -46,13 +46,14 @@ public:
    }
 
    //getters
-   int getRow() const { return (isInvalid() ? 0 : (int)(location / 8));}
-   int getCol() const { return (isInvalid() ? 0 : (int)(location % 8));}
-   int getX() const { return (int)((double)getRow() * getSquareWidth());}
-   int getY() const { return (int)((double)getRow() * getSquareHeight());}
-   bool isValid() const {return !isInvalid();}
-   bool isInvalid() const {return location < 0 || location >= 64;};
-   char getLocation() const { return location;}
+   int getRow()            const { return (isInvalid() ? 0 : (int)(location / 8));}
+   int getCol()            const { return (isInvalid() ? 0 : (int)(location % 8));}
+   int getIntCoord()       const { return getCol() + getRow() * 8;}
+   int getX()              const { return (int)((double)getRow() * getSquareWidth());}
+   int getY()              const { return (int)((double)getRow() * getSquareHeight());}
+   bool isValid()          const {return !isInvalid();}
+   bool isInvalid()        const {return location < 0 || location >= 64;};
+   char getLocation()      const { return location;}
    double getSquareWidth() const { return squareWidth;}
    double getSquareHeight() const { return squareHeight;}
 

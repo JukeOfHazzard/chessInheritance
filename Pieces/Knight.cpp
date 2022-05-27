@@ -6,3 +6,7 @@
 //
 
 #include "Knight.h"
+
+void Knight::getMoves(set<Move> & moves, const Board & board) const {
+    // TODO: implement this stub
+}

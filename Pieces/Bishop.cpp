@@ -6,6 +6,7 @@
 //
 
 #include "Bishop.h"
+
 void Bishop::getMoves(set<Move> &moves, const Board &board) const
 {
     const Delta delta[] =

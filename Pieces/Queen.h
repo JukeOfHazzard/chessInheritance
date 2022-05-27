@@ -10,13 +10,20 @@
 
 #include "Piece.h"
 
-class Queen : Piece {
+class Queen : public Piece {
     
     
 public:
+    Queen(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
+    Queen(Position p, bool isWhite = true)   : Queen(p.getRow(), p.getCol(), isWhite) { }
     
-    char getLetter() const { return (fWhite) ? 'Q' : 'q'; }
+    // override pure virtual methods from Piece class
+    void getMoves(set<Move> & moves, const Board & board) const override;
+    char getLetter() const override { return (fWhite) ? 'Q' : 'q'; }
     
+    void display(ogstream * gout) const override {
+        // TODO: call the correct ogstream method for this piece
+    }
 };
 
 #endif /* Queen_h */

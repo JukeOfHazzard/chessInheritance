@@ -13,8 +13,8 @@ void Board::display(const Position &posHover, const Position &posSelect) const
 {
     pgout->drawBoard();
     
-    pgout->drawHover(posHover);
-    pgout->drawSelected(posSelect);
+    pgout->drawHover(posHover.getIntCoord());
+    pgout->drawSelected(posSelect.getIntCoord());
     
     if(posSelect.isValid())
     {
@@ -23,7 +23,7 @@ void Board::display(const Position &posHover, const Position &posSelect) const
         set <Move> :: iterator it;
         for(it = possible.begin(); it != possible.end(); ++it)
         {
-            pgout->drawPossible(it->getDestination());
+            pgout->drawPossible(it->getDestination().getIntCoord());
         }
     }
     
@@ -36,23 +36,30 @@ void Board::display(const Position &posHover, const Position &posSelect) const
     }
 }
 
+// helper enum
+enum temp_pieces_enum { SPACE,
+    KING,   QUEEN,  ROOK,
+    BISHOP, KNIGHT, PAWN
+};
+
 void Board::reset(bool fFree)
 {
     if(fFree)
         free();
-    //middle board
+
+    // middle board
     for(int r = 2; r < 6; r++)
     {
         for(int c = 0; c < 8; c++)
         {
-            board[r][c] = new Space(r, c);
+            board[r][c] = new Space(Position(r, c));
         }
     }
     
     for(int c = 0; c < 8; c++)
     {
-        board[1][c] = factory(PAWN, 1, c, true); //white pawn
-        board[6][c] = factory(PAWN, 1, c, false); //black pawn
+        board[1][c] = new Pawn(1, c, true); //white pawn
+        board[6][c] = new Pawn(1, c, false); //black pawn
     }
     
     //whites

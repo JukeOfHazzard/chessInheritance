@@ -6,3 +6,7 @@
 //
 
 #include "King.h"
+
+void King::getMoves(set<Move> & moves, const Board & board) const {
+    // TODO: implement this stub
+}

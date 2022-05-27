@@ -12,6 +12,7 @@
 #pragma once
 
 #include <sstream>    // for OSTRINGSTRING
+#include "position.h" // for Position
 using std::string;
 
  /*************************************************************************
@@ -43,7 +44,14 @@ public:
     virtual void drawBoard();
     virtual void drawSelected(int position);
     virtual void drawHover(   int position);
-    virtual void drawPossible(int osition);
+    virtual void drawPossible(int position);
+    
+    // overloaded draw methods to handle Position() objects
+    void drawSelected(Position & p) { drawSelected(positionToInt(p)); }
+    void drawHover(   Position & p) { drawHover(positionToInt(p)); }
+    void drawPossible(Position & p) { drawPossible(positionToInt(p)); }
+    // (helper method for methods right above)
+    int positionToInt(Position & p) { return p.getCol() + p.getRow()*8; }
 
 protected:
     int x; // location of text on the screen
