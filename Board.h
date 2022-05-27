@@ -19,6 +19,7 @@
 
 #include "Move.h"
 #include "Position.h"
+#include "uiInteract.h"
 #include "uiDraw.h"
 #include <iostream>
 using namespace std;
@@ -41,30 +42,30 @@ public:
    {
       free();
    }
+   
    //setters
    void free();
    virtual void reset(bool fFree = true);
    void move(const Move & m);
    void swap(const Position & p1, const Position & p2);
    void setCurrentMove(int currentMove) {this->currentMove = currentMove;}
+   void remove(const Position & pos);
+
+   // operators (fancy setters)
    void operator -= (const Position & rhs);
    void operator -= (const Move & rhs);
-   void remove(const Position & pos);
    const Piece* operator = (Piece & pRhs);
-   Piece & operator [] (const Position & rhs)
-   {
-      return *board[rhs.getRow()][rhs.getCol()];
-   }
    
    // getters
    int getCurrentMove() const { return currentMove;}
    bool whiteTurn() const {return getCurrentMove() % 2 == 1;}
    void display(const Position & posHover, const Position & posSelect) const;
-   const Piece & operator [] (const Position & rhs) const {
-      return *board[rhs.getRow()][rhs.getCol()];
+   void display(const Interface * pUI) const {
+      display(pUI->getHoverPosition(), pUI->getSelectPosition());
    }
    
-   
+   // operators (fancy getters)
+   Piece * operator [] (const Position & rhs) const;
 };
 
 #endif /* Board_h */

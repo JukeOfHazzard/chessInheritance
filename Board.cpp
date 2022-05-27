@@ -117,8 +117,8 @@ void Board::remove(const Position &pos)
 const Piece * Board::operator=(Piece &pRhs)
 {
     delete board[pRhs.getPosition().getRow()][pRhs.getPosition().getCol()];
-    board[pRhs.getPosition().getRow()][pRhs.getPosition().getCol()] = pRhs;
-    return pRhs;
+    board[pRhs.getPosition().getRow()][pRhs.getPosition().getCol()] = &pRhs;
+    return &pRhs;
 }
 
 void Board::operator-=(const Move &rhs)
@@ -147,7 +147,7 @@ void Board::operator-=(const Move &rhs)
 
 void Board::assertBoard()
 {
-#indef NDEBUG
+#ifndef NDEBUG
     for(int r = 0; r < 8; r++)
     {
         for(int c = 0; c < 8; c++)
@@ -168,14 +168,15 @@ void Board::swap(const Position &p1, const Position &p2)
     assert(p2.isValid());
     
     Piece * p = board[p1.getRow()][p1.getCol()];
-    board[p1.getRow()][p1.getCol()] = board[p2.getRow()][p2.getCol()];
+    board[p1.getRow()][p1.getCol()] =
+        board[p2.getRow()][p2.getCol()];
     board[p2.getRow()][p2.getCol()] = p;
     
-    (*this)[p1] = p1;
-    (*this)[p2] = p2;
+    (*this)[p1]->setPosition(p1);
+    (*this)[p2]->setPosition(p2);
     
-    (*this)[p1].setLasMove(currentMove);
-    (*this)[p2].setLasMove(currentMove);
+    (*this)[p1]->setLastMove(currentMove);
+    (*this)[p2]->setLastMove(currentMove);
     
     assertBoard();
 }
@@ -245,26 +246,26 @@ void Board::move(const Move &m)
         *this -= source;
         remove(destin);
         switch(m.getPromotion())
-        {
+        { // NOTE: we need to dereference new Piece* objects in order to match them with *this
             case 'Q':
-                *this = new Queen (destin.getRow(), destin.getCol(), m.getWhiteMove());
+                *this = *new Queen (destin.getRow(), destin.getCol(), m.getWhiteMove());
                 break;
             case 'R':
-                *this = new Rook (destin.getRow(), destin.getCol(), m.getWhiteMove());
+                *this = *new Rook (destin.getRow(), destin.getCol(), m.getWhiteMove());
                 break;
             case 'B':
-                *this = new Bishop (destin.getRow(), destin.getCol(), m.getWhiteMove());
+                *this = *new Bishop (destin.getRow(), destin.getCol(), m.getWhiteMove());
                 break;
             case 'N':
-                *this = new Knight (destin.getRow(), destin.getCol(), m.getWhiteMove());
+                *this = *new Knight (destin.getRow(), destin.getCol(), m.getWhiteMove());
                 break;
             default:
-                *this = new Pawn (destin.getRow(), destin.getCol(), m.getWhiteMove());
+                *this = *new Pawn (destin.getRow(), destin.getCol(), m.getWhiteMove());
                 assert(false);
         }
     }
     
-    else if (m.getCapture != PIECE_EMPTY)
+    else if (m.getCapture() != PIECE_EMPTY)
     {
         assert(board[destin.getRow()][destin.getCol()]->getLetter() != ' ');
         assert(board[source.getRow()][source.getCol()]->getLetter() != ' ');
@@ -285,6 +286,14 @@ void Board::move(const Move &m)
         swap(source, destin);
     }
     
-    assertBoard()
+    assertBoard();
     currentMove++;
+}
+
+/*
+ * OPERATOR []
+ * Class: Board
+ */
+Piece * Board::operator [] (const Position & rhs) const {
+   return board[rhs.getRow()][rhs.getCol()];
 }

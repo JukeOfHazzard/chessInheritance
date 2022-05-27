@@ -22,7 +22,7 @@ public:
     char getLetter() const override { return (fWhite) ? 'R' : 'r'; }
     
     void display(ogstream * gout) const override {
-        // TODO: call the correct ogstream method for this piece
+        gout->drawRook(position.getLocation(), isWhite());
     }
 };
 

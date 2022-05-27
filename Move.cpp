@@ -50,10 +50,10 @@ string Move::getText() const {
  */
 void Move::complete(const Board & board)
 {
-   capture = board[destination].getLetter();
-   isWhite = board[source].isWhite();
+   capture = board[destination]->getLetter();
+   isWhite = board[source]->isWhite();
    
-   if(capture == ' ' && board[source].getLetter() == 'P')
+   if(capture == ' ' && board[source]->getLetter() == 'P')
       enPassant = true;
 }
 

@@ -83,24 +83,27 @@ void parse(const string& textMove, int& positionFrom, int& positionTo)
  * Read a file where moves are encoded in Smith notation
  *******************************************************/
 void readFile(const char* fileName, char* board)
-{
-   // open the file
-   ifstream fin(fileName);
-   if (fin.fail())
-      return;
-
-   // read the file, one move at a time
-   string textMove;
-   bool valid = true;
-   while (valid && fin >> textMove)
-   {
-      int positionFrom;
-      int positionTo;
-      parse(textMove, positionFrom, positionTo);
-      valid = move(board, positionFrom, positionTo);
-   }
-
-   // close and done
-   fin.close();
+{ // TODO: fix and uncomment
+    // ...idk how to convert these functions from modular to oop,
+    // specifically the move() function
+    // fix and uncomment to bring file reading back
+//   // open the file
+//   ifstream fin(fileName);
+//   if (fin.fail())
+//      return;
+//
+//   // read the file, one move at a time
+//   string textMove;
+//   bool valid = true;
+//   while (valid && fin >> textMove)
+//   {
+//      int positionFrom;
+//      int positionTo;
+//      parse(textMove, positionFrom, positionTo);
+//      valid = move(board, positionFrom, positionTo);
+//   }
+//
+//   // close and done
+//   fin.close();
 }
 

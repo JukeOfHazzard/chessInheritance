@@ -7,14 +7,22 @@
 
 #include "Piece.h"
 
+// Board class prototype/forward declaration in Piece.h
+// #include "board.h" in pieces .cpp files
+// all of this allows us to include Board obj as
+// a parameter without having circular imports
+// (so basically it's just convenient black magic)
+#include "board.h"
+
 // member operator overloading
 /* operator: assignment =
  * class: Piece
- */
-Piece & Piece::operator = (const Piece & rhs) {
-   this->postion = rhs.postion;
-   this->fWhite = rhs.fWhite;
-   this->nMoves = rhs.nMoves;
-   this->lastMove = rhs.lastMove;
+ * this method also serves as a helper operator for
+ * lots of other methods, including the copy constructor */
+Piece & Piece::operator = (const Piece * rhs) {
+   this->position = rhs->position;
+   this->fWhite = rhs->fWhite;
+   this->nMoves = rhs->nMoves;
+   this->lastMove = rhs->lastMove;
    return *this;
 }

@@ -23,7 +23,7 @@ public:
     char getLetter() const override { return (fWhite) ? 'P' : 'p'; }
 
     void display(ogstream* pgout) const override {
-        pgout->drawPawn(postion.getLocation(), isWhite());
+        pgout->drawPawn(position.getLocation(), isWhite());
     }
 
     friend class TestPawn;

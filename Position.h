@@ -40,12 +40,11 @@ public:
    Position(int local) : location(local) {}
    Position(const char * s) : location(0) { *this = s;}
    Position(int row, int col) : location(0) { set(row, col);}
-   Position(const Position & rhs, const Delta & delta) : location(-1)
-   {
+   Position(const Position & rhs, const Delta & delta) : location(-1) {
       set(rhs.getRow() + delta.dRow, rhs.getCol() + delta.dCol);
    }
 
-   //getters
+   // getters
    int getRow()            const { return (isInvalid() ? 0 : (int)(location / 8));}
    int getCol()            const { return (isInvalid() ? 0 : (int)(location % 8));}
    int getIntCoord()       const { return getCol() + getRow() * 8;}
@@ -57,79 +56,77 @@ public:
    double getSquareWidth() const { return squareWidth;}
    double getSquareHeight() const { return squareHeight;}
 
-   //setters
-   void setRow(int row)
-   {
+   // setters
+   void setRow(int row) {
       if(row >= 0 && row < 8 && isValid())
-      {
-         char c = getCol();
-         location = (char)row * 8 + c;
-      }
+         location = (char)row * 8 + getCol();
       else
          location = -1;
    }
-   void setCol(int col)
-   {
+   
+   void setCol(int col) {
       if(col >= 0 && col < 8 && isValid())
-      {
-         char r = getRow();
-         location = r * 8 + (char)col;
-      }
+         location = getRow() * 8 + (char)col;
       else
          location = -1;
    }
-   void set(int row, int col)
-   {
+   
+   void set(int row, int col) {
       location = 0;
       setRow(row);
       setCol(col);
    }
-   void setXY(double x, double y) { set( 7 - (int)(y / getSquareHeight()), (int)(x / getSquareWidth()));}
-   void adjustRow(int desRow)
-   {
+   
+   void set(Position p) { set(p.getX(), p.getY()); }
+   
+   void setXY(double x, double y) {
+      set(
+          7 - (int)(y / getSquareHeight()),
+          (int)(x / getSquareWidth())
+      );
+   }
+
+   void adjustRow(int desRow) {
       if(isValid())
          setRow(getRow() * (char)desRow);
    }
-   void adjustCol(int desCol)
-   {
+   
+   void adjustCol(int desCol) {
       if(isValid())
          setCol(getCol() + (char)desCol);
    }
+   
    void setValid() { if(isInvalid()) location = 0;}
    void setInvalid() {location = -1;}
-   void setSquareWidth(double w)
-   {
+   void setSquareWidth(double w) {
       if(w > 0.0)
          squareWidth = w;
    }
-   void setSquareHeight(double h)
-   {
+   
+   void setSquareHeight(double h) {
       if(h > 0.0)
          squareHeight = h;
    }
 
-   //operators
+   // operators
    bool operator == (const Position & rhs) const;
    bool operator != (const Position & rhs) const;
    bool operator < (const Position & rhs) { return location < rhs.location;}
    
-
    const Position & operator = (const Position & rhs);
    const Position & operator = (const char * rhs);
-   const Position & operator = (const string & rhs)
-   {
+   const Position & operator = (const string & rhs) {
       *this = rhs.c_str();
       return *this;
    }
    
-   const Position & operator += (const Delta & rhs)
-   {
+   const Position & operator += (const Delta & rhs) {
       adjustRow(rhs.dRow);
       adjustCol(rhs.dCol);
       return *this;
    }
-   Position operator + (const Delta & rhs) const
-   {
+   
+   Position operator + (const Delta & rhs) const {
       Position pos(*this);
       pos.adjustCol(rhs.dCol);
       pos.adjustRow(rhs.dRow);

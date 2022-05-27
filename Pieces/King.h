@@ -30,7 +30,7 @@ public:
     char getLetter() const override { return (fWhite) ? 'K' : 'k'; }
     
     void display(ogstream * gout) const override {
-        // TODO: call the correct ogstream method for this piece
+        gout->drawKing(position.getLocation(), isWhite());
     }
     
     friend class TestKing;

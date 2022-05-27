@@ -15,13 +15,16 @@
 #include <set>
 using namespace std;
 
-// forward declaration because some of the piece methods takes a Board
-// object as a parameter, and Board has a collection of pieces
+// Board class prototype/forward declaration in Piece.h
+// #include "board.h" in pieces .cpp files
+// all of this allows us to include Board obj as
+// a parameter without having circular imports
+// (so basically it's just convenient black magic)
 class Board;
 
 class Piece {
 protected:
-   Position postion;
+   Position position;
    bool fWhite;
    int nMoves;
    int lastMove;
@@ -32,10 +35,10 @@ protected:
 
 public:
    // constructors
-   Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, postion{0,0} { }
+   Piece() : fWhite{true}, nMoves{0}, lastMove{-1}, position{0,0} { }
 
    Piece (char row, char col, bool white = true) :
-      fWhite{white}, nMoves{0}, postion(row, col), lastMove{-1} { }
+      fWhite{white}, nMoves{0}, position(row, col), lastMove{-1} { }
 
    Piece(Piece & rhs) { *this = rhs; }
    
@@ -51,22 +54,23 @@ public:
    bool isWhite() const { return fWhite; }
    bool isMoved() const { return getNMoves() != 0;}
    int getNMoves() const { return nMoves;}
-   Position getPosition () const { return postion; }
+   Position getPosition () const { return position; }
    bool justMoved(int currentMove) const {
       return (currentMove - 1 == lastMove);
    }
    
    // setters
-   void setLasMove(int currentMove) {lastMove = currentMove;}
+   void setLastMove(int currentMove) { lastMove = currentMove; }
+   void setPosition(Position p) { this->position.set(p); }
    
    // member operators (rhs: "right hand side")
    bool operator == (char rhs) { return getLetter() == rhs; }
    bool operator != (char rhs) { return getLetter() != rhs; }
    
-   Piece & operator = (const Piece & rhs);
-   Piece & operator = (const Position & rhs) {
+   Piece & operator = (const Piece * rhs);
+   Piece & operator = (const Position * rhs) {
       nMoves++;
-      postion = rhs;
+      position = *rhs;
       return *this;
    }
 };

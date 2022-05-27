@@ -20,7 +20,7 @@ public:
     char getLetter() const override { return (fWhite) ? 'B' : 'b'; }
     
     void display(ogstream* pgout) const override {
-        pgout->drawBishop(postion.getLocation(), isWhite());
+        pgout->drawBishop(position.getLocation(), isWhite());
     }
 };
 

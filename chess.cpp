@@ -4,9 +4,13 @@
  * draw something on the window, and accept simple user input
  **********************************************************************/
 
+#include "board.h"
+
+#include "readFile.h"     // for readFile functions
 #include "uiInteract.h"   // for Interface
 #include "uiDraw.h"       // for draw*
 #include "unitTests.h"    // for unit tests
+
 #include <set>            // for STD::SET
 #include <cassert>        // for ASSERT
 #include <fstream>        // for IFSTREAM
@@ -51,20 +55,22 @@ int WINAPI WinMain(
 int main(int argc, char** argv)
 #endif // !_WIN32
 {
-   Interface ui("Chess");    
+   Interface ui("Chess");
+   ogstream * gout;
 
    // Initialize the game class
-   Board board;
+   Board board(gout);
+   Board* pBoard = &board;
    
 #ifdef _WIN32
  //  int    argc;
  //  LPWSTR * argv = CommandLineToArgvW(GetCommandLineW(), &argc);
  //  string filename = argv[1];
-   if (__argc == 2)
-      readFile(__argv[1], board);
+   if (__argc == 2) ; // TODO: fix and uncomment
+//      readFile(__argv[1], board);
 #else // !_WIN32
-   if (argc == 2)
-      readFile(argv[1], board);
+   if (argc == 2) ;
+//      readFile(argv[1], board); // TODO: fix and uncomment
 #endif // !_WIN32
    
    // run unit tests?
@@ -72,7 +78,7 @@ int main(int argc, char** argv)
    if (runUnitTests) ; // add unit test function call here
 
    // set everything into action
-   ui.run(callBack, board);             
+   ui.run(callBack, pBoard);
 
    return YEET;
 }

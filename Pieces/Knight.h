@@ -21,7 +21,7 @@ public:
     char getLetter() const override { return (fWhite) ? 'N' : 'n'; }
     
     void display(ogstream* pgout) const override {
-        pgout->drawKnight(postion.getLocation(), isWhite());
+        pgout->drawKnight(position.getLocation(), isWhite());
     }
 };
 
