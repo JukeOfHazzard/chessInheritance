@@ -14,6 +14,18 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
+set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int numDelta) const {
+    set<Move> moves;
+    // TODO: fix and uncomment
+    return moves;
+}
+
+set<Move> Piece::getMoveNoSlide(const Board & board, const Delta deltas[], int numDelta) const {
+    set<Move> moves;
+    // TODO: fix and uncomment
+    return moves; 
+}
+
 // member operator overloading
 /* operator: assignment =
  * class: Piece

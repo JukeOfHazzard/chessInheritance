@@ -57,31 +57,6 @@ void Move::complete(const Board & board)
       enPassant = true;
 }
 
-
-// setters
-
-/*
- *
- */
-bool Move::operator==(const Move &rhs) const
-{
-   if(source == rhs.getSource() &&
-      destination == rhs.getDestination() &&
-      castleK == rhs.getCastleK() &&
-      castleQ == rhs.getCastleQ() &&
-      enPassant == rhs.getEnPassant() &&
-      capture == rhs.getCapture() &&
-      piece == rhs.getPromotion())
-   {
-      assert(enPassant == rhs.getEnPassant());
-      assert(castleK == rhs.getCastleK());
-      assert(castleQ == rhs.getCastleQ());
-      assert(piece == rhs.getPromotion());
-      return true;
-   }
-   else
-      return false;
-}
 /*
  *
  */
@@ -128,6 +103,43 @@ void Move::read(const std::string &s)
    return;
 }
 
+
+/*
+ *
+ */
+bool Move::operator==(const Move &rhs) const
+{
+   if(source == rhs.getSource() &&
+      destination == rhs.getDestination() &&
+      castleK == rhs.getCastleK() &&
+      castleQ == rhs.getCastleQ() &&
+      enPassant == rhs.getEnPassant() &&
+      capture == rhs.getCapture() &&
+      piece == rhs.getPromotion())
+   {
+      assert(enPassant == rhs.getEnPassant());
+      assert(castleK == rhs.getCastleK());
+      assert(castleQ == rhs.getCastleQ());
+      assert(piece == rhs.getPromotion());
+      return true;
+   }
+   else
+      return false;
+}
+
+// setters
+const Move & Move::operator = (const Move & rhs) {
+   this->source      = rhs.source;
+   this->destination = rhs.destination;
+   this->piece       = rhs.piece;
+   this->capture     = rhs.capture;
+   this->enPassant   = rhs.enPassant;
+   this->castleK     = rhs.castleK;
+   this->castleQ     = rhs.castleQ;
+   this->isWhite     = rhs.isWhite;
+   this->error       = rhs.error;
+   return *this;
+}
 
 /*
  * non-member operator overload: <<

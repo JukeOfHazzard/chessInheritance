@@ -64,17 +64,17 @@ public:
    }
    
    const Move & operator = (const Move & rhs);
-   const Move & operator = (const string & s)
-   {
+   const Move & operator = (const string & s) {
       read(s);
       return *this;
    }
-   const Move & operator = (const char * s)
-   {
+   
+   const Move & operator = (const char * s) {
       const string str(s);
       read(str);
       return *this;
    }
+   
    bool operator == (const Move & rhs) const;
 };
 

@@ -49,6 +49,14 @@ const Position & Position::operator=(const char *rhs)
     return *this;
 }
 
+/************************
+ * STATICS
+ *
+ * TODO: idk what we need to put for the values here
+ ************************/
+double Position::squareWidth  = 10; // px
+double Position::squareHeight = 10; // px
+
 // non-member operator overloading
 /*
  * non-member operator overload: <<
