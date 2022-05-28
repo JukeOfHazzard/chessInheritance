@@ -15,5 +15,10 @@
 #include "board.h"
 
 void Rook::getMoves(set<Move> & moves, const Board & board) const {
-    // TODO: implement this stub
+    const Delta d[4] = {
+                {0,  1},
+       {-1, 0},         {1, 0},
+                {0, -1}
+    };
+    moves = getMoveSlide(board, d, sizeof(d));
 }

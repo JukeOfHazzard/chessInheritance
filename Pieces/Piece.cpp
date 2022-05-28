@@ -23,7 +23,7 @@ set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int num
         Position posMove(position, deltas[i]);
         while(posMove.isValid() && board[posMove]->getLetter() == ' ')
         {
-            move. setSource(getPosition());
+            move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
             moves.insert(move);

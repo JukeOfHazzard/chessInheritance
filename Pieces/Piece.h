@@ -49,7 +49,7 @@ public:
 
    // getters
    virtual char getLetter() const = 0;
-   virtual set<Move> getMoves(const Board & board) const = 0;
+   virtual void getMoves(set<Move> & moves, const Board & board) const = 0;
    
    bool isWhite() const { return fWhite; }
    bool isMoved() const { return getNMoves() != 0;}

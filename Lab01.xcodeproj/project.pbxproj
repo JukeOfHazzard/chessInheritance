@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		143F3E37282723A8000038B7 /* unitTests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = unitTests.cpp; sourceTree = "<group>"; };
 		143F3E38282723A8000038B7 /* unitTests.h */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.c.h; path = unitTests.h; sourceTree = "<group>"; tabWidth = 3; };
-		143F3E3A282733D9000038B7 /* King.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = King.cpp; sourceTree = "<group>"; };
+		143F3E3A282733D9000038B7 /* King.cpp */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.cpp.cpp; path = King.cpp; sourceTree = "<group>"; tabWidth = 3; };
 		143F3E3B282733D9000038B7 /* King.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = King.h; sourceTree = "<group>"; };
 		143F3E3E28273449000038B7 /* Queen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Queen.cpp; sourceTree = "<group>"; };
 		143F3E3F28273449000038B7 /* Queen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queen.h; sourceTree = "<group>"; };

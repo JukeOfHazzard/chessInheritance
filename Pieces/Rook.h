@@ -18,16 +18,8 @@ public:
     Rook(Position p, bool isWhite = true)   : Rook(p.getRow(), p.getCol(), isWhite) { }
     
     // override pure virtual methods from Piece class
-    set<Move> getMoves(const Board & board) const override
-    {
-        Delta d[4] =
-        {
-                    {0,  1},
-           {-1, 0},         {1, 0},
-                    {0, -1}
-        };
-        return getMoveSlide(board, d, sizeof(d));
-    }
+    void getMoves(set<Move> & moves, const Board & board) const override;
+
     char getLetter() const override { return (fWhite) ? 'R' : 'r'; }
     
     void display(ogstream * gout) const override {
