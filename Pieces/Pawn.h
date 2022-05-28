@@ -12,7 +12,7 @@
 
 class Pawn : public Piece {
 private:
-    void addPromotion(set <Move> & moves, Move & move) const;
+    void addPromotion(vector <Move> & moves, Move & move) const;
     
 public:
     Pawn(int r, int c, bool isWhite)        : Piece(r, c, isWhite) { }
