@@ -15,5 +15,13 @@
 #include "board.h"
 
 void Knight::getMoves(vector<Move> & moves, const Board & board) const {
-    // TODO: implement this stub
+   Delta d[8] =
+    {
+             {-1,  2}, { 1,  2},
+    {-2,  1},                    { 2,  1},
+    {-2, -1},                    { 2, -1},
+             {-1, -2}, { 1, -2}
+    };
+    
+    moves = getMoveNoSlide(board, d, 8);
 }

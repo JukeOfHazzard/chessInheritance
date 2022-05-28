@@ -106,4 +106,9 @@ void Pawn::getMoves(vector<Move> &moves, const Board& board) const
              moves.push_back(move);
         }
     }
+    
+    Delta white[1] = {{0,1}};
+    Delta black[1] = {{0,-1}};
+    
+    moves = (isWhite()) ? getMoveNoSlide(board, white, 1) : getMoveNoSlide(board, black, 1);
 }
