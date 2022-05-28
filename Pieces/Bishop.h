@@ -16,7 +16,7 @@ public:
     Bishop(Position p, bool isWhite = true)   : Bishop(p.getRow(), p.getCol(), isWhite) { }
     
     // override pure virtual methods from Piece class
-    void getMoves(set<Move> & moves, const Board & board) const override;
+    void getMoves(vector<Move> & moves, const Board & board) const override;
     char getLetter() const override { return (fWhite) ? 'B' : 'b'; }
     
     void display(ogstream* pgout) const override {

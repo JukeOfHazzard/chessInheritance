@@ -16,12 +16,9 @@ public:
    Space(Position p, bool isWhite = true)   : Space(p.getRow(), p.getCol(), isWhite) { }
    
    // override pure virtual methods from Piece class
-   void getMoves(set<Move> & moves, const Board & board) const override;
+   void getMoves(vector<Move> & moves, const Board & board) const override { }
+   void display(ogstream * pgout) const override { }
    char getLetter() const override { return ' ';}
-   
-   void display(ogstream * pgout) const override {
-      // do nothing...?
-   }
 };
 
 #endif /* Space_h */

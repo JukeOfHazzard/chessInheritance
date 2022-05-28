@@ -14,7 +14,7 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void Bishop::getMoves(set<Move> & moves, const Board &board) const {
+void Bishop::getMoves(vector<Move> & moves, const Board &board) const {
     const Delta delta[] = {
         {-1, 1}, {1, 1},
         {-1, -1}, {1, -1}
