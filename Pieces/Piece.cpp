@@ -14,11 +14,11 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int numDelta) const {
-    set<Move> moves;
+vector<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int numDelta) const {
+    vector<Move> moves;
     Move move;
     
-    for(int i = 0; i < sizeof(deltas); i++)
+    for(int i = 0; i < numDelta; i++)
     {
         Position posMove(position, deltas[i]);
         while(posMove.isValid() && board[posMove]->getLetter() == ' ')
@@ -26,7 +26,7 @@ set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int num
             move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
-            moves.insert(move);
+            moves.push_back(move);
         }
         if(posMove.isValid() &&
            (board[posMove]->isWhite() != fWhite || board[posMove]->getLetter() == ' '))
@@ -38,17 +38,17 @@ set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int num
             {
                 move.setCapture(board[posMove]->getLetter());
             }
-            moves.insert(move);
+            moves.push_back(move);
         }
     }
     return moves;
 }
 
-set<Move> Piece::getMoveNoSlide(const Board & board, const Delta deltas[], int numDelta) const {
-    set<Move> moves;
+vector<Move> Piece::getMoveNoSlide(const Board & board, const Delta deltas[], int numDelta) const {
+    vector<Move> moves;
     Move move;
     
-    for(int i = 0; i < sizeof(deltas); i++)
+    for(int i = 0; i < numDelta; i++)
     {
         Position posMove(position, deltas[i]);
         if(posMove.isValid() &&
@@ -61,7 +61,7 @@ set<Move> Piece::getMoveNoSlide(const Board & board, const Delta deltas[], int n
             {
                 move.setCapture(board[posMove]->getLetter());
             }
-            moves.insert(move);
+            moves.push_back(move);
         }
     }
     return moves; 

@@ -12,7 +12,7 @@
 #include "Move.h"
 #include "uiDraw.h"
 
-#include <set>
+#include <vector>
 using namespace std;
 
 // Board class prototype/forward declaration in Piece.h
@@ -30,8 +30,8 @@ protected:
    int lastMove;
    
    // helper methods
-   set<Move> getMoveSlide ( const Board & board, const Delta deltas[], int numDelta) const;
-   set<Move> getMoveNoSlide ( const Board & board, const Delta deltas[], int numDelta) const;
+   vector<Move> getMoveSlide ( const Board & board, const Delta deltas[], int numDelta) const;
+   vector<Move> getMoveNoSlide ( const Board & board, const Delta deltas[], int numDelta) const;
 
 public:
    // constructors
@@ -49,7 +49,7 @@ public:
 
    // getters
    virtual char getLetter() const = 0;
-   virtual void getMoves(set<Move> & moves, const Board & board) const = 0;
+   virtual void getMoves(vector<Move> & moves, const Board & board) const = 0;
    
    bool isWhite() const { return fWhite; }
    bool isMoved() const { return getNMoves() != 0;}

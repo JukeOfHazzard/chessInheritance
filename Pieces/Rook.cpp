@@ -14,7 +14,7 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void Rook::getMoves(set<Move> & moves, const Board & board) const {
+void Rook::getMoves(vector<Move> & moves, const Board & board) const {
     const Delta d[4] = {
                 {0,  1},
        {-1, 0},         {1, 0},

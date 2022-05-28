@@ -18,9 +18,9 @@ void Board::display(const Position &posHover, const Position &posSelect) const
     
     if(posSelect.isValid())
     {
-        set<Move> possible;
+        vector<Move> possible;
         board[posSelect.getRow()][posSelect.getCol()]->getMoves(possible, *this);
-        set<Move>::iterator it;
+        vector<Move>::iterator it;
         for (it = possible.begin(); it != possible.end(); ++it)
         {
             pgout->drawPossible(it->getDestination().getIntCoord());

@@ -14,7 +14,7 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void King::getMoves(set<Move> & moves, const Board & board) const {
+void King::getMoves(vector<Move> & moves, const Board & board) const {
    const Delta d[8] = {
        {-1,  1}, { 0,  1}, { 1,  1},
        {-1,  0},           { 1,  0},
@@ -37,7 +37,7 @@ void King::getMoves(set<Move> & moves, const Board & board) const {
          move.setDestination(posMove);
          move.setWhiteMove(isWhite());
          move.setCastle(true);
-         moves.insert(move);
+         moves.push_back(move);
       }
    }
    
@@ -58,7 +58,7 @@ void King::getMoves(set<Move> & moves, const Board & board) const {
          move.setDestination(posMove);
          move.setWhiteMove(isWhite());
          move.setCastle(false);
-         moves.insert(move);
+         moves.push_back(move);
       }
    }
 }

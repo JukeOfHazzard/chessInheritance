@@ -14,7 +14,7 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void Queen::getMoves(set<Move> & moves, const Board & board) const {
+void Queen::getMoves(vector<Move> & moves, const Board & board) const {
     const Delta d[8] = {
         {-1,  1}, { 0,  1}, { 1,  1},
         {-1,  0},           { 1,  0},

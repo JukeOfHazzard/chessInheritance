@@ -18,7 +18,7 @@ public:
     Queen(Position p, bool isWhite = true)   : Queen(p.getRow(), p.getCol(), isWhite) { }
     
     // override pure virtual methods from Piece class
-    void getMoves(set<Move> & moves, const Board & board) const override;
+    void getMoves(vector<Move> & moves, const Board & board) const override;
     char getLetter() const override { return (fWhite) ? 'Q' : 'q'; }
     
     void display(ogstream * gout) const override {
