@@ -14,6 +14,6 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void Knight::getMoves(set<Move> & moves, const Board & board) const {
+void Knight::getMoves(vector<Move> & moves, const Board & board) const {
     // TODO: implement this stub
 }

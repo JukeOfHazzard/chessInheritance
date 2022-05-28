@@ -6,7 +6,3 @@
 //
 
 #include "Space.h"
-
-void Space::getMoves(set<Move> & moves, const Board & board) const {
-    // do nothing
-}

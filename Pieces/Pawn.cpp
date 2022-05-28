@@ -14,13 +14,13 @@
 // (so basically it's just convenient black magic)
 #include "board.h"
 
-void Pawn::addPromotion(set<Move> &moves, Move &move) const
+void Pawn::addPromotion(vector<Move> &moves, Move &move) const
 {
 //    move.setPromotion('Q');
 //    moves.insert(move);
 }
 
-void Pawn::getMoves(set<Move> &moves, const Board& board) const
+void Pawn::getMoves(vector<Move> &moves, const Board& board) const
 {
     // for basic promotion
     {
@@ -38,7 +38,7 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
             if (posMove.getRow() == (isWhite() ? 7 : 0))
                 addPromotion(moves, move);
             else
-                moves.insert(move);
+                moves.push_back(move);
         }
     }
           
@@ -56,7 +56,7 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
             move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
-            moves.insert(move);
+            moves.push_back(move);
         }
     }
             
@@ -79,7 +79,7 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
             if (posMove.getRow() == (isWhite() ? 7 :0))
                 addPromotion(moves, move);
             else
-                 moves.insert(move);
+                 moves.push_back(move);
         }
     }
     
@@ -103,7 +103,7 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
             move.setWhiteMove(isWhite());
             move.setCapture(board[posMove]->getLetter());
             move.setEnPassant();
-             moves.insert(move);
+             moves.push_back(move);
         }
     }
 }
