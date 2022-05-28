@@ -59,7 +59,7 @@ void Board::reset(bool fFree)
     for(int c = 0; c < 8; c++)
     {
         board[1][c] = new Pawn(1, c, true); //white pawn
-        board[6][c] = new Pawn(1, c, false); //black pawn
+        board[6][c] = new Pawn(6, c, false); //black pawn
     }
     
     //whites
@@ -198,12 +198,12 @@ void Board::move(const Move &m)
         assert(board[row][6]->getLetter() == ' ');
         assert(board[row][7]->getLetter() == 'R');
         
-        source.set(row, 6);
-        destin.set(row, 4);
+        source.setRowCol(row, 6);
+        destin.setRowCol(row, 4);
         swap(source, destin);
         
-        source.set(row, 5);
-        destin.set(row, 7);
+        source.setRowCol(row, 5);
+        destin.setRowCol(row, 7);
         swap(source, destin);
     }
     
@@ -217,12 +217,12 @@ void Board::move(const Move &m)
         assert(board[row][1]->getLetter() == ' ');
         assert(board[row][0]->getLetter() == 'R');
         
-        source.set(row, 2);
-        destin.set(row, 4);
+        source.setRowCol(row, 2);
+        destin.setRowCol(row, 4);
         swap(source, destin);
         
-        source.set(row, 3);
-        destin.set(row, 0);
+        source.setRowCol(row, 3);
+        destin.setRowCol(row, 0);
         swap(source, destin);
     }
     

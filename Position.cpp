@@ -44,7 +44,7 @@ const Position & Position::operator=(const char *rhs)
              rhs[1] < '1' || rhs[1] > '8')
         location = -1;
     else
-        set(rhs[1] - '1', rhs[0] - 'a');
+        setRowCol(rhs[1] - '1', rhs[0] - 'a');
     
     return *this;
 }
@@ -54,8 +54,8 @@ const Position & Position::operator=(const char *rhs)
  *
  * TODO: idk what we need to put for the values here
  ************************/
-double Position::squareWidth  = 10; // px
-double Position::squareHeight = 10; // px
+double Position::squareWidth  = 70; // px
+double Position::squareHeight = 70; // px
 
 // non-member operator overloading
 /*

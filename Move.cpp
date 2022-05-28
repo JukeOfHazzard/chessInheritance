@@ -23,7 +23,6 @@ Move::Move() : piece(PIECE_EMPTY), capture(PIECE_EMPTY), enPassant(false),
  *
  */
 string Move::getText() const {
-   // TODO:
    if(error.length())
       return error;
    

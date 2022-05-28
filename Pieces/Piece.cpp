@@ -17,6 +17,12 @@
 set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int numDelta) const {
     set<Move> moves;
     // TODO: fix and uncomment
+    for(int i = 0; i < sizeof(deltas); i++)
+    {
+        Position posMove(position, deltas[i]);
+//        whil
+    }
+    
     return moves;
 }
 

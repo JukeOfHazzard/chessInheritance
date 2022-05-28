@@ -61,7 +61,7 @@ public:
    
    // setters
    void setLastMove(int currentMove) { lastMove = currentMove; }
-   void setPosition(Position p) { this->position.set(p); }
+   void setPosition(Position p) { this->position.setRowCol(p); }
    
    // member operators (rhs: "right hand side")
    bool operator == (char rhs) { return getLetter() == rhs; }

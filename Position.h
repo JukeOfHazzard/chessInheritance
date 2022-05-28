@@ -39,9 +39,9 @@ public:
    Position() : location(-1) {}
    Position(int local) : location(local) {}
    Position(const char * s) : location(0) { *this = s;}
-   Position(int row, int col) : location(0) { set(row, col);}
+   Position(int row, int col) : location(0) { setRowCol(row, col);}
    Position(const Position & rhs, const Delta & delta) : location(-1) {
-      set(rhs.getRow() + delta.dRow, rhs.getCol() + delta.dCol);
+      setRowCol(rhs.getRow() + delta.dRow, rhs.getCol() + delta.dCol);
    }
 
    // getters
@@ -71,16 +71,16 @@ public:
          location = -1;
    }
    
-   void set(int row, int col) {
-      location = 0;
+   void setRowCol(int row, int col) {
+//      location = 0;
       setRow(row);
       setCol(col);
    }
    
-   void set(Position p) { set(p.getX(), p.getY()); }
+   void setRowCol(Position p) { setRowCol(p.getX(), p.getY()); }
    
    void setXY(double x, double y) {
-      set(
+      setRowCol(
           7 - (int)(y / getSquareHeight()),
           (int)(x / getSquareWidth())
       );

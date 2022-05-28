@@ -56,10 +56,12 @@ int main(int argc, char** argv)
 #endif // !_WIN32
 {
    Interface ui("Chess");
-   ogstream * gout;
+   
+   ogstream gout;
+   ogstream* pGout = &gout;
 
    // Initialize the game class
-   Board board(gout);
+   Board board(pGout);
    Board* pBoard = &board;
    
 #ifdef _WIN32
