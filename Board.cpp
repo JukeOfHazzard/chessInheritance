@@ -18,18 +18,18 @@ void Board::display(const Position &posHover, const Position &posSelect) const
     
     if(posSelect.isValid())
     {
-        set <Move> possible;
+        set<Move> possible;
         board[posSelect.getRow()][posSelect.getCol()]->getMoves(possible, *this);
-        set <Move> :: iterator it;
-        for(it = possible.begin(); it != possible.end(); ++it)
+        set<Move>::iterator it;
+        for (it = possible.begin(); it != possible.end(); ++it)
         {
             pgout->drawPossible(it->getDestination().getIntCoord());
         }
     }
     
-    for(int r = 0; r < 8; r++)
+    for (int r = 0; r < 8; r++)
     {
-        for(int c = 0; c < 8; c++)
+        for (int c = 0; c < 8; c++)
         {
             board[r][c]->display(pgout);
         }
@@ -44,13 +44,13 @@ enum temp_pieces_enum { SPACE,
 
 void Board::reset(bool fFree)
 {
-    if(fFree)
+    if (fFree)
         free();
 
     // middle board
-    for(int r = 2; r < 6; r++)
+    for (int r = 2; r < 6; r++)
     {
-        for(int c = 0; c < 8; c++)
+        for (int c = 0; c < 8; c++)
         {
             board[r][c] = new Space(Position(r, c));
         }
@@ -63,23 +63,23 @@ void Board::reset(bool fFree)
     }
     
     //whites
-    board[0][0] = new Rook (0, 0, true);
-    board[0][1] = new Knight (0, 1, true);
-    board[0][2] = new Bishop (0, 2, true);
-    board[0][3] = new Queen (0, 3, true);
-    board[0][4] = new King (0, 4, true);
-    board[0][5] = new Bishop (0, 5, true);
-    board[0][6] = new Knight (0, 6, true);
-    board[0][7] = new Rook (0, 7, true);
+    board[0][0] = new Rook(0, 0, true);
+    board[0][1] = new Knight(0, 1, true);
+    board[0][2] = new Bishop(0, 2, true);
+    board[0][3] = new Queen(0, 3, true);
+    board[0][4] = new King(0, 4, true);
+    board[0][5] = new Bishop(0, 5, true);
+    board[0][6] = new Knight(0, 6, true);
+    board[0][7] = new Rook(0, 7, true);
     //blacks
-    board[7][0] = new Rook (7, 0, false);
-    board[7][1] = new Knight (7, 1, false);
-    board[7][2] = new Bishop (7, 2, false);
-    board[7][3] = new Queen (7, 3, false);
-    board[7][4] = new King (7, 4, false);
-    board[7][5] = new Bishop (7, 5, false);
-    board[7][6] = new Knight (7, 6, false);
-    board[7][7] = new Rook (7, 7, false);
+    board[7][0] = new Rook(7, 0, false);
+    board[7][1] = new Knight(7, 1, false);
+    board[7][2] = new Bishop(7, 2, false);
+    board[7][3] = new Queen(7, 3, false);
+    board[7][4] = new King(7, 4, false);
+    board[7][5] = new Bishop(7, 5, false);
+    board[7][6] = new Knight(7, 6, false);
+    board[7][7] = new Rook(7, 7, false);
     
     currentMove = 0;
     assertBoard();

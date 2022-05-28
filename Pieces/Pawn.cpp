@@ -26,12 +26,9 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
     {
         Position posMove(getPosition(), isWhite() ? ADD_R : SUB_R);
         
-//         Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pMovePiece = new Space(posMove); // dummy
-        char cMovePiece = pMovePiece->getLetter();
         
         if (posMove.isValid() &&
-            cMovePiece == ' ')
+            board[posMove]->getLetter() == ' ')
         {
             Move move;
             move.setSource(getPosition());
@@ -40,100 +37,73 @@ void Pawn::getMoves(set<Move> &moves, const Board& board) const
             
             if (posMove.getRow() == (isWhite() ? 7 : 0))
                 addPromotion(moves, move);
-            else ; // ';' for commented out code below
-//                moves.insert(move); // TODO: fix and uncomment
+            else
+                moves.insert(move);
         }
     }
-    
-    // for regular movment
+          
+// for start movment
     if (!isMoved())
     {
         assert(position.getRow() == (isWhite() ? 1 : 6));
         Position posMove(isWhite() ? 3 : 4, getPosition().getCol());
         Position posCheck(isWhite() ? 2 : 5, getPosition().getCol());
         
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pMovePiece = new Space(posMove); // dummy
-        char cMovePiece = pMovePiece->getLetter();
-        
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pCheckPiece = new Space(posMove); // dummy
-        char cCheckPiece = pCheckPiece->getLetter();
-        
-        if (cMovePiece == ' ' && cCheckPiece == ' ')
+        if ( board[posMove]->getLetter() == ' ' &&
+             board[posCheck]->getLetter() == ' ')
         {
             Move move;
             move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
-//            moves.insert(move); // TODO: fix and uncomment
+            moves.insert(move);
         }
     }
-    //for start movment
+            
+//for attack movment
     const int cDelta[] = {1, -1};
     for (int i = 0; i < 2; i++)
     {
         Position posMove(position.getRow() + (isWhite() ? 1 : -1),
                          position.getCol() + cDelta[i]);
         
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pMovePiece = new Space(posMove); // dummy
-        char cMovePiece = pMovePiece->getLetter();
-        
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pCheckPiece = new Space(posMove); // dummy
-        char cCheckPiece = pCheckPiece->getLetter();
-        
-        if (posMove.isValid() && cMovePiece != ' ' &&
-           pMovePiece->isWhite() != isWhite())
+        if (posMove.isValid() && board[posMove]->getLetter() != ' ' &&
+            board[posMove]->isWhite() != isWhite())
         {
             Move move;
             move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
-            move.setCapture(cMovePiece);
+            move.setCapture(board[posMove]->getLetter());
             
             if (posMove.getRow() == (isWhite() ? 7 :0))
                 addPromotion(moves, move);
-            else ;
-                // moves.insert(move); // TODO: fix and uncomment
+            else
+                 moves.insert(move);
         }
     }
     
-    // for en passant
+// for en passant
     for (int i = 0; i < 2; i++)
     {
         Position posMove(position.getRow() + (isWhite() ? 1 : -1),
                          position.getCol() + cDelta[i]);
         Position posKill(position.getRow(), position.getCol() + cDelta[i]);
         
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pMovePiece = new Space(posMove); // dummy
-        char cMovePiece = pMovePiece->getLetter();
-        
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pCheckPiece = new Space(posMove); // dummy
-        char cCheckPiece = pCheckPiece->getLetter();
-        
-        // Piece* pMovePiece = board[posMove]; //this throws an error
-        Piece* pKillPiece = new Space(posMove); // dummy
-        char cKillPiece = pKillPiece->getLetter();
-        
         if (posMove.isValid() && position.getRow() == (isWhite() ? 4 : 3) &&
-            cMovePiece == ' ' &&
-            cKillPiece == 'p' &&
-            pKillPiece->isWhite() != isWhite() &&
-            pKillPiece->getNMoves() == 1 &&
-            pKillPiece->justMoved(board.getCurrentMove()))
+            board[posMove]->getLetter() == ' ' &&
+            tolower(board[posKill]->getLetter()) == 'p' &&
+            board[posKill]->isWhite() != isWhite() &&
+            board[posKill]->getNMoves() == 1 &&
+            board[posKill]->justMoved(board.getCurrentMove()))
         {
             Move move;
             move.setSource(getPosition());
             move.setDestination(posMove);
             move.setWhiteMove(isWhite());
-            move.setCapture(pMovePiece->getLetter());
+            move.setCapture(board[posMove]->getLetter());
             move.setEnPassant();
-            // moves.insert(move); // TODO: fix and uncomment
+             moves.insert(move);
         }
     }
 }
-

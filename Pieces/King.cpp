@@ -21,4 +21,44 @@ void King::getMoves(set<Move> & moves, const Board & board) const {
        {-1, -0}, { 0, -1}, {-1, -1}
    };
    moves = getMoveNoSlide(board, d, 8);
+   
+   if(!isMoved()) {
+      Position posSpace(position.getRow(), 5);
+      Position posMove(position.getRow(), 6);
+      Position posRook(position.getRow(), 7);
+     
+      if(board[posMove]->getLetter() == ' ' &&
+         board[posSpace]->getLetter() == ' ' &&
+         tolower(board[posRook]->getLetter()) == 'r' &&
+         board[posRook]->isMoved() == false)
+      {
+         Move move;
+         move.setSource(getPosition());
+         move.setDestination(posMove);
+         move.setWhiteMove(isWhite());
+         move.setCastle(true);
+         moves.insert(move);
+      }
+   }
+   
+   if(!isMoved()) {
+        Position posSpace1(position.getRow(), 3);
+        Position posMove(position.getRow(), 2);
+        Position posSpace2(position.getRow(), 1);
+        Position posRook(position.getRow(), 0);
+     
+      if(board[posMove]->getLetter() == ' ' &&
+         board[posSpace1]->getLetter() == ' ' &&
+         board[posSpace2]->getLetter() == ' ' &&
+         tolower(board[posRook]->getLetter()) == 'r' &&
+         board[posRook]->isMoved() == false)
+      {
+         Move move;
+         move.setSource(getPosition());
+         move.setDestination(posMove);
+         move.setWhiteMove(isWhite());
+         move.setCastle(false);
+         moves.insert(move);
+      }
+   }
 }
