@@ -16,19 +16,54 @@
 
 set<Move> Piece::getMoveSlide(const Board & board, const Delta deltas[], int numDelta) const {
     set<Move> moves;
-    // TODO: fix and uncomment
+    Move move;
+    
     for(int i = 0; i < sizeof(deltas); i++)
     {
         Position posMove(position, deltas[i]);
-//        whil
+        while(posMove.isValid() && board[posMove]->getLetter() == ' ')
+        {
+            move. setSource(getPosition());
+            move.setDestination(posMove);
+            move.setWhiteMove(isWhite());
+            moves.insert(move);
+        }
+        if(posMove.isValid() &&
+           (board[posMove]->isWhite() != fWhite || board[posMove]->getLetter() == ' '))
+        {
+            move.setSource(getPosition());
+            move.setDestination(posMove);
+            move.setWhiteMove(isWhite());
+            if(board[posMove]->getLetter() == ' ')
+            {
+                move.setCapture(board[posMove]->getLetter());
+            }
+            moves.insert(move);
+        }
     }
-    
     return moves;
 }
 
 set<Move> Piece::getMoveNoSlide(const Board & board, const Delta deltas[], int numDelta) const {
     set<Move> moves;
-    // TODO: fix and uncomment
+    Move move;
+    
+    for(int i = 0; i < sizeof(deltas); i++)
+    {
+        Position posMove(position, deltas[i]);
+        if(posMove.isValid() &&
+           (board[posMove]->isWhite() != fWhite || board[posMove]->getLetter() == ' '))
+        {
+            move.setSource(getPosition());
+            move.setDestination(posMove);
+            move.setWhiteMove(isWhite());
+            if(board[posMove]->getLetter() == ' ')
+            {
+                move.setCapture(board[posMove]->getLetter());
+            }
+            moves.insert(move);
+        }
+    }
     return moves; 
 }
 
