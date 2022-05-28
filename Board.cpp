@@ -290,10 +290,3 @@ void Board::move(const Move &m)
     currentMove++;
 }
 
-/*
- * OPERATOR []
- * Class: Board
- */
-Piece * Board::operator [] (const Position & rhs) const {
-   return board[rhs.getRow()][rhs.getCol()];
-}

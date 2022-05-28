@@ -65,7 +65,9 @@ public:
    }
    
    // operators (fancy getters)
-   Piece * operator [] (const Position & rhs) const;
+   Piece * operator [] (const Position & rhs) const {
+      return board[rhs.getRow()][rhs.getCol()];
+   }
 };
 
 #endif /* Board_h */
